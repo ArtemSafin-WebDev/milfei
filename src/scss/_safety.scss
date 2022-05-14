@@ -1,0 +1,38 @@
+.safety {
+    margin-bottom: 20rem;
+}
+
+.safety__row {
+    padding: 0 var(--content-padding);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 4rem;
+    align-items: flex-start;
+}
+
+.safety__heading {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 5.8rem;
+    line-height: 90%;
+    text-transform: lowercase;
+    b {
+        font-weight: 600;
+    }
+}
+
+.safety__text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    max-width: 48rem;
+}
+
+.safety__btns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
