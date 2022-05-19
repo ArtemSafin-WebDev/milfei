@@ -34,6 +34,7 @@ body {
     flex-direction: column;
     font-family: var(--lato);
     color: var(--text-color);
+    overflow-y: scroll;
 }
 
 main {
