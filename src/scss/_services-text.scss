@@ -1,0 +1,17 @@
+.services-text {
+    margin-bottom: 15rem;
+}
+
+.services-text__content {
+    padding: 0 1rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3.6rem;
+    line-height: 4.6rem;
+    p {
+        margin-bottom: 2rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

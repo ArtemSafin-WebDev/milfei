@@ -10,6 +10,7 @@ import tabs from './tabs';
 import menu from './menu';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import servicesSlider from './servicesSlider';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     modals();
     tabs();
     menu();
+    servicesSlider();
 });
 
 document.addEventListener('lazyloaded', () => {
