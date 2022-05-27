@@ -1,4 +1,6 @@
 .service-intro {
+    color: white;
+    margin-bottom: 1rem;
 }
 
 .service-intro__bg {
@@ -27,6 +29,8 @@
     width: 80.8rem;
     width: 63%;
     height: auto;
+    mix-blend-mode: overlay;
+    opacity: 0.5;
 }
 
 .service-intro__content {
@@ -35,27 +39,24 @@
     position: relative;
     z-index: 1;
     padding: 0 var(--content-padding);
-    padding-top: 2rem;
+    padding-top: 0;
     padding-bottom: 5rem;
     min-height: min(100vh, 72rem);
     overflow: hidden;
 }
 
 .service-intro__breadcrumbs {
-    margin-left: auto;
-    margin-bottom: 3rem;
-    text-align: right;
     font-style: normal;
     font-weight: 400;
     font-size: 1.2rem;
     line-height: 1.4rem;
-    font-family: 'Arial', sans-serif;
-
-    a {
-        &.active {
-            font-weight: 700;
-        }
-    }
+    text-align: center;
+    padding: 1.2rem var(--content-padding);
+    border-bottom: 1px solid #ffffff;
+    margin-bottom: auto;
+    color: black;
+    display: block;
+    text-align: left;
 }
 
 .service-intro__bottom-row {
@@ -67,9 +68,11 @@
 }
 
 .service-intro__heading {
+    text-align: center;
+    text-transform: lowercase;
+
     font-style: normal;
     font-weight: 500;
-    font-size: 9.6rem;
+    font-size: 6.4rem;
     line-height: 90%;
-    text-transform: lowercase;
 }
