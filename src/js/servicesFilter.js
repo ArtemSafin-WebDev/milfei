@@ -17,6 +17,7 @@ export default function servicesFilter() {
         const selectAllTags = Array.from(element.querySelectorAll('.js-all-tag'));
         const searchBtn = element.querySelector('.services-filter__modes-btn--search');
         const searchInput = element.querySelector('.services-filter__category-search-input');
+        const closeSearch = element.querySelector('.services-filter__modes-btn--close-search');
         let offset = 0;
 
         console.log('Action', actionURL);
@@ -132,18 +133,22 @@ export default function servicesFilter() {
 
         searchBtn.addEventListener('click', event => {
             event.preventDefault();
-            element.classList.toggle('search-shown');
+            element.classList.add('search-shown');
         });
 
-        searchInput.addEventListener('input', () => {
+        const filterTags = () => {
             const value = searchInput.value.trim().toLowerCase();
 
             const tagsNotShowAll = allTags.filter(tag => !tag.matches('.js-all-tag'));
 
             const filteredTags = tagsNotShowAll.filter(tag => {
-                const text = tag.closest('.services-filter__tag').querySelector('.services-filter__tag-content').textContent.trim().toLowerCase();
+                const text = tag
+                    .closest('.services-filter__tag')
+                    .querySelector('.services-filter__tag-content')
+                    .textContent.trim()
+                    .toLowerCase();
 
-                console.log("TExt", text)
+                console.log('TExt', text);
 
                 if (text.includes(value)) return true;
                 return false;
@@ -156,7 +161,22 @@ export default function servicesFilter() {
                 } else {
                     label.classList.add('hidden');
                 }
-            })
+            });
+        }
+
+        searchInput.addEventListener('input', () => {
+            filterTags();
         });
+
+        closeSearch.addEventListener('click', event => {
+            event.preventDefault();
+            element.classList.remove('search-shown');
+            searchInput.value = '';
+            filterTags();
+        });
+
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+        })
     });
 }

@@ -1,0 +1,77 @@
+.services-device {
+}
+
+.services-device__content {
+    padding: 1rem;
+    padding-bottom: 0;
+}
+
+.services-device__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.6rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.services-device__tag {
+    border: 1px solid #e0e0e0;
+    display: block;
+    text-align: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    padding-top: 0.8rem;
+    flex-shrink: 0;
+}
+
+.services-device__intro {
+    padding-top: 8rem;
+    padding-bottom: 6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+}
+
+.services-device__intro-text {
+    width: 100%;
+    margin: auto;
+    max-width: 95rem;
+}
+
+.services-device__content-inner {
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.services-device__accordions {
+    padding: 0 2rem;
+    margin-bottom: 12rem;
+}
+
+.services-device__heading {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 6.4rem;
+    line-height: 90%;
+    margin-bottom: 8rem;
+    text-align: center;
+}
+
+.services-device__results {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 20rem;
+}
