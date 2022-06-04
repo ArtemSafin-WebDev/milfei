@@ -10,6 +10,7 @@
     width: 100%;
     height: 100%;
     z-index: -1;
+    background: #F1F2EF;
 }
 
 .service-intro__bg-image {
@@ -54,7 +55,7 @@
     padding: 1.2rem var(--content-padding);
     border-bottom: 1px solid #ffffff;
     margin-bottom: auto;
-    color: black;
+    color: var(--text-color);
     display: block;
     text-align: left;
 }
@@ -69,13 +70,24 @@
 
 .service-intro__heading {
     text-align: center;
-    text-transform: lowercase;
+   
 
     font-style: normal;
     font-weight: 500;
     font-size: 6.4rem;
     line-height: 90%;
     margin-top: -1rem;
+
+    &--dark {
+        color: var(--text-color);
+    }
+
+    &--centered {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 
 .service-intro__wrapper {
@@ -89,4 +101,7 @@
     text-align: center;
     text-transform: lowercase;
     margin-top: 1rem;
+    &--dark {
+        color: var(--text-color);
+    }
 }

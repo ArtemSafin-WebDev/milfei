@@ -1,31 +1,49 @@
 .page-footer {
+    background: #171616;
+    color: white;
 }
 
 .page-footer__row {
-    padding: 2.5rem var(--content-padding);
-    border-top: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 5rem calc(var(--content-padding) + 2rem);
+    
     display: flex;
     align-items: center;
+}
+
+.page-footer__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-right: 6.5rem;
+}
+
+.page-footer__logo-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color: #e0e0e0;
 }
 
 .page-footer__logo-image {
     display: block;
     height: auto;
     width: 22rem;
-    margin-right: 10rem;
+    
 }
 
 .page-footer__social-list {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1.4rem;
-    margin-right: 20rem;
+    gap: 2rem;
+   
 }
 
 .page-footer__social-list-item {
     flex-shrink: 0;
+
 }
 
 .page-footer__social-link {
@@ -33,12 +51,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 5rem;
-    height: 5rem;
-    background-color: black;
-    border-radius: 50%;
-    flex-shrink: 0;
-    transition: transform .3s;
+    width: 3rem;
+    height: 3em;
+
+    transition: transform 0.3s;
 
     .no-touch &:hover,
     .touch &:active {
@@ -46,8 +62,9 @@
     }
 
     svg {
-        width: 2.4rem;
-        height: 2.4rem;
+        display: block;
+        width: 100%;
+        height: 100%;
         fill: white;
     }
 }
@@ -60,11 +77,16 @@
     font-family: 'Arial', sans-serif;
     text-decoration: underline;
     text-decoration-color: transparent;
-    transition: all .2s;
-
+    transition: all 0.2s;
+    color: #E0E0E0;
+    margin-left: auto;
+    &:link,
+    &:visited {
+        color: #E0E0E0;
+    }
     .no-touch &:hover,
     .touch &:active {
-        text-decoration-color: var(--text-color);
+        text-decoration-color: #E0E0E0;
     }
 }
 
@@ -75,4 +97,6 @@
     font-size: 1.4rem;
     line-height: 1.8rem;
     font-family: 'Arial', sans-serif;
+    color: #E0E0E0;
+    margin-left: auto;
 }

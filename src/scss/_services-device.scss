@@ -59,6 +59,10 @@
 .services-device__accordions {
     padding: 0 2rem;
     margin-bottom: 12rem;
+
+    &--with-top-margin {
+        margin-top: 5rem;
+    }
 }
 
 .services-device__heading {

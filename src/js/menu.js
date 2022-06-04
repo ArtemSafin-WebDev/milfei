@@ -2,7 +2,7 @@ import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock';
 
 export default function menu() {
     const burger = document.querySelector('.page-header__burger');
-    const menu = document.querySelector('.page-header__burger-menu');
+    const menu = document.querySelector('.page-header__menu');
 
     window.menuOpen = false;
 

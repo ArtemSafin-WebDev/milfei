@@ -14,10 +14,13 @@
 
     &--transparent {
         background-color: transparent;
-        border-bottom: 1px solid black;
-        &:first-child {
-            border-top: 1px solid black;
+        
+        border-top: 1px solid var(--text-color);
+        &:last-child {
+            border-bottom: 1px solid var(--text-color);
         }
+       
+       
     }
 }
 .accordions__accordion-btn {
@@ -33,6 +36,8 @@
     cursor: pointer;
     user-select: none;
     transition: background-color .2s, color .2s;
+
+   
     svg {
         flex-shrink: 0;
         width: 4rem;
@@ -42,13 +47,17 @@
         transform: rotate(180deg);
     }
 
-    .accordions__accordion--transparent.js-accordion.active & {
-        background-color: #000;
-        color: white;
+    .js-accordion.active & {
         svg {
             transform: rotate(0deg);
         }
     }
+
+    // .accordions__accordion--transparent.js-accordion.active & {
+    //     background-color: var(--text-color);
+    //     color: white;
+       
+    // }
 }
 
 .accordions__accordion-btn-text {
@@ -72,9 +81,19 @@
     padding-left: 4rem;
     padding-right: 4rem;
 
-    .accordions__accordion--transparent & {
-        border: none;
+    &--small-padding {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+       
     }
+
+    .accordions__accordion--transparent & {
+        border-top: 1px solid var(--text-color);
+    }
+
+  
     ul {
         li {
             padding-left: 2.5rem;
