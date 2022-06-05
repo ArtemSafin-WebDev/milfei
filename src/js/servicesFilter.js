@@ -18,6 +18,7 @@ export default function servicesFilter() {
         const searchBtn = element.querySelector('.services-filter__modes-btn--search');
         const searchInput = element.querySelector('.services-filter__category-search-input');
         const closeSearch = element.querySelector('.services-filter__modes-btn--close-search');
+        const results = element.querySelector('.services-filter__results');
         let offset = 0;
 
         console.log('Action', actionURL);
@@ -125,6 +126,41 @@ export default function servicesFilter() {
             })
                 .then(res => {
                     console.log('Response', res.data);
+
+                    results.innerHTML = '';
+                    const list = document.createElement('ol');
+                    list.className = 'services-results-list';
+
+                    results.appendChild(list);
+
+                    res.data.items.forEach(item => {
+                        const li = document.createElement('li');
+                        li.className = 'services-results-list-item';
+                        const card = document.createElement('div');
+                        card.className = 'service-card service-card--link';
+
+                        card.innerHTML = `
+                            <div class="service-card__content">
+                                <h4 class="service-card__title">
+                                    ${item.name}
+                                </h4>
+                            </div>
+
+                            <div class="service-card__price">
+                                ${Number(item.price).toLocaleString()} ₽
+                            </div>
+                            <a href="${item.url}" class="service__card-link-wrapper">
+
+                            </a>
+                            <a href="#" class="service-card__like-btn" style="visibility: hidden;">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                    <use xlink:href="#heart"></use>
+                                </svg>
+                            </a>
+                        `;
+
+                        li.appendChild(card);
+                    });
                 })
                 .catch(err => {
                     console.error(err);
@@ -162,7 +198,7 @@ export default function servicesFilter() {
                     label.classList.add('hidden');
                 }
             });
-        }
+        };
 
         searchInput.addEventListener('input', () => {
             filterTags();
@@ -177,6 +213,6 @@ export default function servicesFilter() {
 
         form.addEventListener('submit', event => {
             event.preventDefault();
-        })
+        });
     });
 }
