@@ -4,12 +4,6 @@
 .article__intro {
     position: relative;
     z-index: 1;
-    display: grid;
-    text-align: center;
-    padding-bottom: 7rem;
-    color: white;
-    min-height: 40rem;
-   
     overflow: hidden;
 }
 
@@ -31,6 +25,14 @@
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
         // z-index: 15;
     }
+}
+
+.article__intro-content {
+    display: grid;
+    text-align: center;
+    padding-bottom: 7rem;
+    color: white;
+    min-height: 40rem;
 }
 
 .article__intro-bg-image {
@@ -107,7 +109,7 @@
     border-radius: 50%;
     border: 1px solid #ffffff;
     border-radius: 50%;
-    transition: background-color .2s, border-color .2s;
+    transition: background-color 0.2s, border-color 0.2s;
 
     svg {
         display: block;
@@ -117,8 +119,8 @@
     }
 
     &:hover {
-        background: black;
-        border-color: black;
+        background: var(--text-color);
+        border-color: var(--text-color);
     }
 }
 
@@ -154,9 +156,9 @@
     user-select: none;
 
     &:hover {
-        border-color: black;
+        border-color: var(--text-color);
         color: white;
-        background: black;
+        background: var(--text-color);
     }
 }
 

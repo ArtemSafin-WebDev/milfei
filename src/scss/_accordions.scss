@@ -45,11 +45,19 @@
         fill: currentColor;
         transition: transform 0.2s;
         transform: rotate(180deg);
+        &.icon-accordion-cross {
+            transform: rotate(0);
+        }
+        
     }
 
     .js-accordion.active & {
         svg {
             transform: rotate(0deg);
+
+            &.icon-accordion-cross {
+                transform: rotate(45deg);
+            }
         }
     }
 

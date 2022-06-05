@@ -12,11 +12,11 @@
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 1.2;
-    color: black;
+    color: var(--text-color);
     flex-shrink: 0;
     &:link,
     &:visited {
-        color: black;
+        color: var(--text-color);
     }
     svg {
         position: absolute;
