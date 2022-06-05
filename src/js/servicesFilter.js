@@ -160,6 +160,8 @@ export default function servicesFilter() {
                         `;
 
                         li.appendChild(card);
+
+                        list.appendChild(li);
                     });
                 })
                 .catch(err => {
