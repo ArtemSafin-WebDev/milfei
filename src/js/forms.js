@@ -62,10 +62,7 @@ export default function forms() {
                         setTimeout(() => {
                             message.style.display = 'none';
                             input.value = '';
-                            form.reset();
-                            $(form)
-                                .parsley()
-                                .reset();
+                           
                         }, 4000);
                     })
                     .catch(err => console.error(err));
