@@ -1,0 +1,64 @@
+<div class="modal js-modal" id="callback-modal">
+    <div class="modal__inner">
+        <div class="modal__callback-modal">
+            <div class="modal__callback-modal-top-row">
+                <div class="modal__callback-modal-manager">
+                    <div class="modal__callback-modal-manager-photo-container">
+                        <img src="img/girls/2.jpg" alt="" class="modal__callback-modal-manager-photo">
+                    </div>
+                    <div class="modal__callback-modal-manager-name">
+                        онлайн-запись
+                    </div>
+                </div>
+                <button class="modal__callback-modal-close js-close-modal">
+                    <svg width="14" height="14" aria-hidden="true" class="icon-modal-close">
+                        <use xlink:href="#modal-close"></use>
+                    </svg>
+                </button>
+            </div>
+            <form action="/" method="POST" class="modal__callback-modal-form js-callback-form">
+                <div class="modal__callback-modal-form-fields">
+
+
+                    <div class="modal__callback-modal-form-field modal__callback-modal-form-field--required">
+                        <input type="text" class="modal__callback-modal-form-field-input" name="name" required=""
+                            placeholder="имя">
+                    </div>
+                    <div class="modal__callback-modal-form-field modal__callback-modal-form-field--required">
+                        <input type="tel" class="modal__callback-modal-form-field-input js-phone-input" name="phone"
+                            placeholder="номер" required="" data-parsley-phone="">
+                    </div>
+                    <div class="modal__callback-modal-form-field">
+                        <input type="email" class="modal__callback-modal-form-field-input" name="email"
+                            placeholder="e-mail">
+                    </div>
+                </div>
+                <button type="submit" class="modal__callback-modal-form-submit">
+                    отправить
+                </button>
+                <div class="modal__callback-modal-form-text">
+                    Нажимая на кнопку вы даете свое согласие на обработку
+                    своих персональных данных согласно политике конфиденциальности
+                </div>
+                <div class="modal__callback-modal-form-success">
+                    <div class="modal__callback-modal-form-success-message">
+
+
+                        <svg width="14" height="14" aria-hidden="true" class="icon-ok">
+                            <use xlink:href="#ok"></use>
+                        </svg>
+                        <h4 class="modal__callback-modal-form-success-heading">
+                            заявка<br>
+                            отправлена
+                        </h4>
+                    </div>
+
+                    <div class="modal__callback-modal-form-success-text">
+                        Мы вам перезвоним
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
