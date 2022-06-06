@@ -128,41 +128,101 @@ export default function servicesFilter() {
                     console.log('Response', res.data);
 
                     results.innerHTML = '';
-                    const list = document.createElement('ol');
-                    list.className = 'services-results-list';
 
-                    results.appendChild(list);
+                    if (res.data.items) {
+                        const list = document.createElement('ol');
+                        list.className = 'services-results-list';
 
-                    res.data.items.forEach(item => {
-                        const li = document.createElement('li');
-                        li.className = 'services-results-list-item';
-                        const card = document.createElement('div');
-                        card.className = 'service-card service-card--link';
+                        results.appendChild(list);
 
-                        card.innerHTML = `
-                            <div class="service-card__content">
-                                <h4 class="service-card__title">
-                                    ${item.name}
-                                </h4>
-                            </div>
+                        res.data.items.forEach(item => {
+                            const li = document.createElement('li');
+                            li.className = 'services-results-list-item';
+                            const card = document.createElement('div');
+                            card.className = 'service-card service-card--link';
 
-                            <div class="service-card__price">
-                                ${Number(item.price).toLocaleString()} ₽
-                            </div>
-                            <a href="${item.url}" class="service__card-link-wrapper">
+                            card.innerHTML = `
+                                <div class="service-card__content">
+                                    <h4 class="service-card__title">
+                                        ${item.name}
+                                    </h4>
+                                </div>
+    
+                                <div class="service-card__price">
+                                    ${Number(item.price).toLocaleString()} ₽
+                                </div>
+                                <a href="${item.url}" class="service__card-link-wrapper">
+    
+                                </a>
+                                <a href="#" class="service-card__like-btn" style="visibility: hidden;">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+                                </a>
+                            `;
 
-                            </a>
-                            <a href="#" class="service-card__like-btn" style="visibility: hidden;">
-                                <svg width="14" height="14" aria-hidden="true" class="icon-heart">
-                                    <use xlink:href="#heart"></use>
+                            li.appendChild(card);
+
+                            list.appendChild(li);
+                        });
+                    } else if (res.data.sections) {
+                        const accordionsWrapper = document.createElement('div');
+                        accordionsWrapper.className =
+                            'accordions accordions--no-gap services-device__accordions services-device__accordions--with-top-margin';
+
+                        results.appendChild(accordionsWrapper);
+
+                        res.data.sections.forEach(section => {
+                            const accordion = document.createElement('div');
+                            accordion.className = 'accordions__accordion accordions__accordion--transparent js-accordion';
+
+                            accordion.innerHTML = `<div class="accordions__accordion-btn js-accordion-btn">
+                            <span class="accordions__accordion-btn-text">
+                                ${section.name}
+                            </span>
+
+                                <svg width="14" height="14" aria-hidden="true" class="icon-caret">
+                                    <use xlink:href="#caret"></use>
                                 </svg>
-                            </a>
-                        `;
+                            </div>
+                            <div class="accordions__accordion-content js-accordion-content">
+                                <div
+                                    class="accordions__accordion-content-inner accordions__accordion-content-inner--small-padding">
+                                    <div class="services-results">
+                                        <ol class="services-results-list">
+                                            ${section.items.map(
+                                                item => `
+                                                <li class="services-results-list-item">
+                                                    <div class="service-card service-card--link">
+                                                        <div class="service-card__content">
+                                                            <h4 class="service-card__title">
+                                                               ${item.name}
+                                                            </h4>
+                                                        </div>
+        
+                                                        <div class="service-card__price">
+                                                            ${Number(item.price).toLocaleString()} ₽
+                                                        </div>
+                                                        <a href="${item.url}" class="service__card-link-wrapper">
+    
+                                                        </a>
+                                                        <a href="#" class="service-card__like-btn" style="visibility: hidden;">
+                                                            <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                                                <use xlink:href="#heart"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                `
+                                            ).join(' ')}
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>`;
 
-                        li.appendChild(card);
-
-                        list.appendChild(li);
-                    });
+                            accordionsWrapper.appendChild(accordion);
+                        });
+                    }
                 })
                 .catch(err => {
                     console.error(err);
