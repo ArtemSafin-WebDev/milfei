@@ -68,7 +68,7 @@ export default function forms() {
             if (isValidPhoneNumber) {
                 message.textContent = '...';
                 message.style.display = '';
-
+                const formData = new FormData(form);
                 axios({
                     method: 'post',
                     url: actionURL,
