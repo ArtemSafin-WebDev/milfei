@@ -66,6 +66,12 @@ export default function servicesFilter() {
 
             selectText.textContent = radioValue;
 
+            console.log("CHECKED RADIO", checkedRadio)
+
+            const url = new URL(window.location);
+            url.searchParams.set('SECTION_ID', checkedRadio.querySelector('input').value);
+            window.history.pushState({}, '', url);
+
             tagsLayers.forEach(layer => {
                 layer.classList.remove('active');
                 const layerInputs = Array.from(layer.querySelectorAll('input[type="checkbox"]'));
@@ -190,8 +196,9 @@ export default function servicesFilter() {
                                     class="accordions__accordion-content-inner accordions__accordion-content-inner--small-padding">
                                     <div class="services-results">
                                         <ol class="services-results-list">
-                                            ${section.items.map(
-                                                item => `
+                                            ${section.items
+                                                .map(
+                                                    item => `
                                                 <li class="services-results-list-item">
                                                     <div class="service-card service-card--link">
                                                         <div class="service-card__content">
@@ -214,7 +221,8 @@ export default function servicesFilter() {
                                                     </div>
                                                 </li>
                                                 `
-                                            ).join(' ')}
+                                                )
+                                                .join(' ')}
                                         </ol>
                                     </div>
                                 </div>
@@ -237,7 +245,8 @@ export default function servicesFilter() {
         const filterTags = () => {
             const value = searchInput.value.trim().toLowerCase();
 
-            const tagsNotShowAll = allTags.filter(tag => !tag.matches('.js-all-tag'));
+            const tagsNotShowAll = allTags;
+            // const tagsNotShowAll = allTags.filter(tag => !tag.matches('.js-all-tag'));
 
             const filteredTags = tagsNotShowAll.filter(tag => {
                 const text = tag

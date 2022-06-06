@@ -7,6 +7,8 @@ export default function forms() {
         const actionURL = form.getAttribute('action');
         const success = form.querySelector('.modal__callback-modal-form-success');
         const error = form.querySelector('.modal__callback-modal-form-error');
+        const successMessage = form.querySelector('.modal__callback-modal-form-success-heading');
+        const errorMessage = form.querySelector('.modal__callback-modal-form-error-heading');
         form.addEventListener('submit', event => {
             event.preventDefault();
             if (
@@ -27,12 +29,15 @@ export default function forms() {
                             $(form)
                                 .parsley()
                                 .reset();
+                            successMessage.textContent = res.data.message;
                             success.classList.add('active');
+
                             console.log('Response', res.data);
                             setTimeout(() => {
                                 success.classList.remove('active');
                             }, 4000);
                         } else {
+                            errorMessage.textContent = res.data.error;
                             error.classList.add('active');
                             console.log('Error', res.data.error);
                             setTimeout(() => {
@@ -41,6 +46,7 @@ export default function forms() {
                         }
                     })
                     .catch(err => {
+                        errorMessage.textContent = err.message;
                         error.classList.add('active');
                         console.log('Error', err);
                         setTimeout(() => {
@@ -85,23 +91,39 @@ export default function forms() {
                                 }, 4000);
                             } else {
                                 message.textContent = res.data.error;
+                                message.classList.add('has-error');
                                 setTimeout(() => {
                                     message.style.display = 'none';
                                     message.textContent = '...';
                                     input.value = '';
-                                }, 4000);
+                                    message.classList.remove('has-error');
+                                }, 10000);
                             }
                         }, 300);
                     })
                     .catch(err => {
                         console.error(err);
                         message.textContent = err.message;
+                        message.classList.add('has-error');
                         setTimeout(() => {
                             message.style.display = 'none';
                             message.textContent = '...';
                             input.value = '';
-                        }, 4000);
+                            message.classList.remove('has-error');
+                        }, 10000);
                     });
+            } else {
+                if (!input.value.includes('_')) {
+                    message.style.display = '';
+                    message.textContent = 'Неверный номер телефона'
+                    message.classList.add('has-error');
+                    setTimeout(() => {
+                        message.style.display = 'none';
+                        message.textContent = '...';
+                        input.value = '';
+                        message.classList.remove('has-error');
+                    }, 10000);
+                }
             }
         });
     });

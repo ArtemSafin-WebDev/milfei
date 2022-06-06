@@ -115,6 +115,11 @@
     line-height: 2.9rem;
     border: 1px solid #e0e0e0;
     border-radius: 0px 7.5rem 7.5rem 4rem;
+    transition: all .2s;
+    &.has-error {
+        border: 1px solid #ffcbcb;
+        color: #ff6262;
+    }
 }
 
 .consultation__chat-form {
