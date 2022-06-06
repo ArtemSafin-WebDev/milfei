@@ -68,9 +68,9 @@ export default function servicesFilter() {
 
             console.log("CHECKED RADIO", checkedRadio)
 
-            const url = new URL(window.location);
-            url.searchParams.set('SECTION_ID', checkedRadio.querySelector('input').value);
-            window.history.pushState({}, '', url);
+            // const url = new URL(window.location);
+            // url.searchParams.set('SECTION_ID', checkedRadio.querySelector('input').value);
+            // window.history.pushState({}, '', url);
 
             tagsLayers.forEach(layer => {
                 layer.classList.remove('active');

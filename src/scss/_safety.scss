@@ -1,5 +1,9 @@
 .safety {
     margin-bottom: 20rem;
+
+    @include breakpoint(mobile) {
+        margin-bottom: 4rem;
+    }
 }
 
 .safety__row {
@@ -8,6 +12,12 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-gap: 4rem;
     align-items: flex-start;
+
+    @include breakpoint(mobile) {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: stretch;
+        grid-gap: 2rem;
+    }
 }
 
 .safety__heading {
@@ -16,6 +26,13 @@
     font-size: 5.8rem;
     line-height: 90%;
     text-transform: lowercase;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        
+        font-size: 3.2rem;
+        line-height: 90%;
+    }
     b {
         font-weight: 600;
     }
@@ -27,6 +44,14 @@
     font-size: 1.8rem;
     line-height: 2.2rem;
     max-width: 48rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        max-width: none;
+    }
 }
 
 .safety__btns {
@@ -35,4 +60,8 @@
     justify-content: flex-end;
     gap: 1rem;
     margin-top: 1.5rem;
+
+    @include breakpoint(mobile) {
+        margin-top: 2.5rem;
+    }
 }

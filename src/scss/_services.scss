@@ -24,7 +24,6 @@
     }
 
     &:active {
-
         .services__card-image-container::before {
             opacity: 0 !important;
         }
@@ -32,8 +31,6 @@
             opacity: 0.5;
         }
     }
-
-    
 }
 
 .services__card-image-container {
@@ -64,7 +61,7 @@
         height: 100%;
         background: black;
         opacity: 0;
-        transition: opacity .2s;
+        transition: opacity 0.2s;
         z-index: 15;
     }
 
@@ -111,6 +108,10 @@
     grid-row: 1 / 2;
     z-index: 5;
 
+    @include breakpoint(mobile) {
+        padding: 0;
+    }
+
     &--align-end {
         justify-content: flex-end;
     }
@@ -121,4 +122,11 @@
     font-weight: 500;
     font-size: 6.4rem;
     line-height: 5.4rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 1;
+    }
 }

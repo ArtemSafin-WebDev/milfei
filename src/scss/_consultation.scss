@@ -3,10 +3,14 @@
 
 .consultation__top-row {
     min-height: 10rem;
-    background-color: #000;
+    background: #362e29;
     color: white;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @include breakpoint(mobile) {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
 
 .consultation__info {
@@ -18,13 +22,17 @@
 .consultation__manager {
     margin-right: 3rem;
     flex-shrink: 0;
+
+    @include breakpoint(mobile) {
+        margin: 0;
+        flex-shrink: 1;
+    }
 }
 
 .consultation__manager-photo-container {
     width: 7rem;
     height: 7rem;
-  
-  
+
     position: relative;
 
     &::after {
@@ -33,9 +41,13 @@
         width: 1rem;
         height: 1rem;
         background: #27ae60;
-        right: .5rem;
-        bottom: .5rem;
+        right: 0.5rem;
+        bottom: 0.5rem;
         border-radius: 50%;
+    }
+
+    @include breakpoint(mobile) {
+        margin-right: 1rem;
     }
 }
 
@@ -55,11 +67,25 @@
     font-size: 5.8rem;
     line-height: 90%;
     margin-top: -0.2em;
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 3.5rem;
+        line-height: 90%;
+        margin: 0;
+        margin-top: -0.5rem;
+    }
 }
 
 .consultation__offices {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @include breakpoint(mobile) {
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        color: var(--text-color);
+    }
 }
 
 .consultation__office {
@@ -69,6 +95,15 @@
     padding: 1rem;
     border-left: 1px solid #333333;
     justify-content: center;
+
+    @include breakpoint(mobile) {
+        padding: 1.7rem var(--content-padding);
+        border-left: 1px solid #e0e0e0;
+
+        &:first-child {
+            border-color: transparent;
+        }
+    }
 }
 
 .consultation__office-name {
@@ -77,6 +112,13 @@
     font-size: 1.8rem;
     line-height: 2.4rem;
     font-family: 'Arial', sans-serif;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+    }
 }
 
 .consultation__office-phone {
@@ -88,6 +130,13 @@
     text-decoration: underline;
     text-decoration-color: transparent;
     transition: all 0.2s;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+    }
 
     .no-touch &:hover,
     .touch &:active {
@@ -115,7 +164,16 @@
     line-height: 2.9rem;
     border: 1px solid #e0e0e0;
     border-radius: 0px 7.5rem 7.5rem 4rem;
-    transition: all .2s;
+    transition: all 0.2s;
+
+    @include breakpoint(mobile) {
+        padding: 2.5rem var(--content-padding);
+        max-width: 24.8rem;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+    }
     &.has-error {
         border: 1px solid #ffcbcb;
         color: #ff6262;
@@ -131,6 +189,12 @@
     border: 1px solid #e0e0e0;
     border-radius: 7.5rem 5.5rem 0px 7.5rem;
     align-self: flex-end;
+
+    @include breakpoint(mobile) {
+        max-width: 28rem;
+        padding: 2.5rem 3rem;
+        border-radius: 7.5rem 7.5rem 0px 7.5rem;
+    }
 }
 
 .consultation__chat-form-input {
@@ -144,5 +208,12 @@
 
     @include placeholder {
         color: var(--text-color);
+    }
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 2.4rem;
+        line-height: 2.9rem;
     }
 }

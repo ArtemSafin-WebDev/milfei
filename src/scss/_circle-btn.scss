@@ -14,9 +14,19 @@
     border: 1px solid var(--text-color);
     border-radius: 50%;
     flex-shrink: 0;
-    transition: background-color .2s, color .2s;
+    transition: background-color 0.2s, color 0.2s;
     color: var(--text-color);
-  
+
+    @include breakpoint(mobile) {
+        width: 7rem;
+        height: 7rem;
+        font-style: normal;
+        font-weight: 400;
+        font-size: .7rem;
+        line-height: 1.2;
+        
+    }
+
     &:link,
     &:visited {
         color: var(--text-color);

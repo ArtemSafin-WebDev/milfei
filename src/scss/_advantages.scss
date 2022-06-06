@@ -10,33 +10,62 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-gap: 1rem;
+
+    @include breakpoint(mobile) {
+        grid-gap: 5rem;
+    }
 }
 
 .advantages__card {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-gap: 1rem;
+
+    @include breakpoint(mobile) {
+        grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+        grid-gap: 1rem;
+        grid-template-areas: 'image image' 'heading heading' 'button text';
+
+        .advantages__list-item:nth-child(even) & {
+            grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+            grid-template-areas: 'image image' 'heading heading' 'text button';
+        }
+    }
 }
 
 .advantages__card-image-container {
     position: relative;
-    mask-image: url('../img/masks/6.svg');
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-  
+    @include breakpoint(mobile) {
+        margin: 0 calc(-1 * var(--content-padding));
+        grid-area: image;
+        margin-bottom: 1rem;
+    }
+
+    @include breakpointMF(small-tablet) {
+        mask-image: url('../img/masks/6.svg');
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+    }
+
     &::before {
         content: '';
         display: block;
         padding-bottom: 100%;
+
+        @include breakpoint(mobile) {
+            padding-bottom: 60%;
+        }
     }
 
-    .advantages__list-item:nth-child(even) & {
-        order: 2;
-        mask-image: url('../img/masks/7.svg');
-        mask-size: contain;
-        mask-repeat: no-repeat;
-        mask-position: center;
+    @include breakpointMF(small-tablet) {
+        .advantages__list-item:nth-child(even) & {
+            order: 2;
+            mask-image: url('../img/masks/7.svg');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+        }
     }
 }
 
@@ -50,16 +79,23 @@
 }
 
 .advantages__card-content {
-    padding-left: 5rem;
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-    .advantages__list-item:nth-child(even) & {
-        padding-left: 0;
-        padding-right: 5rem;
-        text-align: left;
-        padding-top: 7rem;
+    @include breakpointMF(small-tablet) {
+        padding-left: 5rem;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        padding-top: 0;
+
+        .advantages__list-item:nth-child(even) & {
+            padding-left: 0;
+            padding-right: 5rem;
+            text-align: left;
+            padding-top: 7rem;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        display: contents;
     }
 }
 
@@ -72,6 +108,20 @@
     text-transform: lowercase;
     margin-bottom: 3rem;
 
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 3.2rem;
+        line-height: 90%;
+        margin-bottom: 1rem;
+        grid-area: heading;
+        text-align: right;
+
+        .advantages__list-item:nth-child(even) & {
+            text-align: left;
+        }
+    }
+
     b {
         font-weight: 600;
     }
@@ -82,20 +132,43 @@
     font-weight: 300;
     font-size: 1.8rem;
     line-height: 2.2rem;
-    margin-bottom: 7rem;
-    max-width: 38rem;
-    align-self: flex-end;
 
-    .advantages__list-item:nth-child(even) & {
-        align-self: flex-start;
-        max-width: 50rem;
+    @include breakpointMF(small-tablet) {
+        margin-bottom: 7rem;
+        max-width: 38rem;
+        align-self: flex-end;
+        .advantages__list-item:nth-child(even) & {
+            align-self: flex-start;
+            max-width: 50rem;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        margin: 0;
+        grid-area: text;
+        text-align: right;
+
+        .advantages__list-item:nth-child(even) & {
+            text-align: left;
+        }
     }
 }
 
 .advantages__card-link {
-    margin-left: -3rem;
-    .advantages__list-item:nth-child(even) & {
-        margin-left: auto;
-        margin-right: 5rem;
+    @include breakpointMF(small-tablet) {
+        margin-left: -3rem;
+        .advantages__list-item:nth-child(even) & {
+            margin-left: auto;
+            margin-right: 5rem;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        grid-area: button;
+        align-self: flex-end;
     }
 }

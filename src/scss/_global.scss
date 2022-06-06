@@ -12,6 +12,10 @@
     --primary-color: white;
     --text-color: #362E29;
     --lato: 'Lato', sans-serif;
+
+    @include breakpoint(mobile) {
+        --content-padding: 2rem;
+    }
 }
 
 html {
@@ -24,6 +28,10 @@ html {
     }
 
     @include noHighlight();
+
+    @include breakpoint(mobile) {
+        font-size: 10px;
+    }
 }
 
 body {

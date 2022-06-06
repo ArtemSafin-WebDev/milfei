@@ -5,9 +5,21 @@
 
 .page-footer__row {
     padding: 5rem calc(var(--content-padding) + 2rem);
-    
+
     display: flex;
     align-items: center;
+
+    @include breakpoint(mobile) {
+        padding: 0 1rem;
+        padding-top: 3rem;
+        padding-bottom: 1rem;
+        grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+        grid-gap: 3.5rem;
+        align-items: stretch;
+        grid-template-areas: 'logo social' 'policy copyright';
+        display: grid;
+       
+    }
 }
 
 .page-footer__logo {
@@ -16,6 +28,12 @@
     align-items: flex-start;
     gap: 0.6rem;
     margin-right: 6.5rem;
+
+    @include breakpoint(mobile) {
+        margin: 0;
+        gap: 0.5rem;
+        grid-area: logo;
+    }
 }
 
 .page-footer__logo-text {
@@ -24,13 +42,22 @@
     font-size: 1.2rem;
     line-height: 1.8rem;
     color: #e0e0e0;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+    }
 }
 
 .page-footer__logo-image {
     display: block;
     height: auto;
     width: 22rem;
-    
+
+    @include breakpoint(mobile) {
+    }
 }
 
 .page-footer__social-list {
@@ -38,12 +65,17 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
-   
+    flex-shrink: 0;
+
+    @include breakpoint(mobile) {
+        grid-area: social;
+        align-items: center;
+        align-self: flex-end;
+    }
 }
 
 .page-footer__social-list-item {
     flex-shrink: 0;
-
 }
 
 .page-footer__social-link {
@@ -52,7 +84,7 @@
     justify-content: center;
     flex-direction: column;
     width: 3rem;
-    height: 3em;
+    height: 3rem;
 
     transition: transform 0.3s;
 
@@ -78,15 +110,25 @@
     text-decoration: underline;
     text-decoration-color: transparent;
     transition: all 0.2s;
-    color: #E0E0E0;
+    color: #e0e0e0;
     margin-left: auto;
+
+    @include breakpoint(mobile) {
+        margin: 0;
+        grid-area: policy;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.8rem;
+        justify-self: flex-start;
+    }
     &:link,
     &:visited {
-        color: #E0E0E0;
+        color: #e0e0e0;
     }
     .no-touch &:hover,
     .touch &:active {
-        text-decoration-color: #E0E0E0;
+        text-decoration-color: #e0e0e0;
     }
 }
 
@@ -97,6 +139,16 @@
     font-size: 1.4rem;
     line-height: 1.8rem;
     font-family: 'Arial', sans-serif;
-    color: #E0E0E0;
+    color: #e0e0e0;
     margin-left: auto;
+
+    @include breakpoint(mobile) {
+        margin: 0;
+        grid-area: copyright;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.8rem;
+        justify-self: flex-start;
+    }
 }
