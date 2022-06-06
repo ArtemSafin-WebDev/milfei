@@ -1,11 +1,25 @@
 .services-slider {
     margin-bottom: 5rem;
+
+    @include breakpoint(mobile) {
+        .swiper {
+            overflow: visible;
+        }
+
+        .swiper-slide {
+            width: 19.2rem;
+        }
+    }
 }
 
 .services-slider__content {
     padding: 0 1rem;
     padding-bottom: 4.5rem;
     position: relative;
+
+    @include breakpoint(mobile) {
+        padding-bottom: 0;
+    }
     &::before {
         content: '';
         left: 1rem;
@@ -14,6 +28,10 @@
         height: 1px;
         background-color: var(--text-color);
         position: absolute;
+
+        @include breakpoint(mobile) {
+            display: none;
+        }
     }
 }
 
@@ -26,6 +44,11 @@
     position: relative;
     z-index: 1;
     color: var(--text-color);
+
+    @include breakpoint(mobile) {
+        min-height: 40rem;
+        padding: 2rem;
+    }
 
     svg {
         flex-shrink: 0;
@@ -98,6 +121,10 @@
     font-size: 1.2rem;
     line-height: 1.2;
     margin-bottom: 10rem;
+
+    @include breakpoint(mobile) {
+        margin-bottom: 7rem;
+    }
 }
 
 .services-slider__card-title {
@@ -106,12 +133,20 @@
     font-size: 2.4rem;
     line-height: 2.6rem;
     margin-bottom: 3rem;
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+    }
 }
 
 .services-slider__progress {
     margin-top: 4rem;
     position: relative;
     z-index: 1;
+
+ 
 
     &::before {
         content: '';
@@ -138,5 +173,10 @@
         background-size: 2.4rem 2.4rem;
         background-repeat: no-repeat;
         background-position: center;
+
+        @include breakpoint(mobile) {
+            height: 3.5rem;
+            margin-top: -1.75rem;
+        }
     }
 }

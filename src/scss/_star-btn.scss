@@ -14,6 +14,15 @@
     line-height: 1.2;
     color: var(--text-color);
     flex-shrink: 0;
+    font-family: 'Arial', sans-serif;
+    @include breakpoint(mobile) {
+        width: 9rem;
+        height: 9rem;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
     &:link,
     &:visited {
         color: var(--text-color);

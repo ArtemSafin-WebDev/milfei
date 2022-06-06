@@ -1,5 +1,9 @@
 .services-text {
     margin-bottom: 15rem;
+
+    @include breakpoint(mobile) {
+        margin-bottom: 5rem;
+    }
 }
 
 .services-text__content {
@@ -17,9 +21,15 @@
         font-weight: 600;
         font-size: 1.8rem;
         line-height: 2.4rem;
+
+        
     }
     p {
         margin-bottom: 2rem;
+
+        @include breakpoint(mobile) {
+            margin-bottom: 1.5rem;
+        }
         &:last-child {
             margin-bottom: 0;
         }

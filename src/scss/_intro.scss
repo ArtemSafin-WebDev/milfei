@@ -31,7 +31,7 @@
     width: 80.8rem;
     width: 63%;
     height: auto;
-
+   
     @include breakpoint(mobile) {
         width: 63rem;
         right: 3rem;

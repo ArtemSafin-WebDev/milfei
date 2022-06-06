@@ -118,6 +118,9 @@ export default function servicesFilter() {
                     const allTagInGroup = tag.closest('.services-filter__tags-layer').querySelector('.js-all-tag');
                     allTagInGroup.checked = false;
                 }
+
+
+                
                 sendData();
             });
         });

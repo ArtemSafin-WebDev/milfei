@@ -12,13 +12,19 @@ export default function servicesSlider() {
         const container = element.querySelector('.swiper');
 
         new Swiper(container, {
-            slidesPerView: 4,
+            slidesPerView: 'auto',
             spaceBetween: 10,
             speed: 600,
             scrollbar: {
                 el: element.querySelector('.services-slider__progress'),
                 draggable: true,
                 dragSize: 100
+            },
+            breakpoints: {
+                641: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                }
             }
             
         });
