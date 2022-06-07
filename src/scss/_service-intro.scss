@@ -30,6 +30,12 @@
             height: 100%;
             z-index: 2;
         }
+
+        &--no-overlay {
+            &::after {
+                display: none;
+            }
+        }
     }
 }
 

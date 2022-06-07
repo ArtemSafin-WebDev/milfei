@@ -15,13 +15,14 @@
     font-weight: 400;
     font-size: 2.4rem;
     line-height: 3rem;
+    padding-top: 5rem;
 
     @include breakpoint(mobile) {
         font-style: normal;
         font-weight: 600;
         font-size: 1.8rem;
         line-height: 2.4rem;
-
+        padding-top: 3rem;
         
     }
     p {

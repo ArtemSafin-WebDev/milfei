@@ -10,6 +10,7 @@ export default function servicesFilter() {
         const selectText = element.querySelector('.services-filter__category-select-current-text');
         const selectInputs = Array.from(element.querySelectorAll('.services-filter__category-select-item-input'));
         const selectItems = Array.from(element.querySelectorAll('.services-filter__category-select-item'));
+        const tagsLayersContainer = element.querySelector('.services-filter__tags-layers');
         const tagsLayers = Array.from(element.querySelectorAll('.services-filter__tags-layer'));
         const form = element.querySelector('form');
         const actionURL = form.getAttribute('action');
@@ -18,9 +19,12 @@ export default function servicesFilter() {
         const searchBtn = element.querySelector('.services-filter__modes-btn--search');
         const searchInput = element.querySelector('.services-filter__category-search-input');
         const closeSearch = element.querySelector('.services-filter__modes-btn--close-search');
+        const showTagsCloud = element.querySelector('.services-filter__tags-cloud');
         const results = element.querySelector('.services-filter__results');
+        const tagsNotFound = element.querySelector('.services-filter__tags-not-found');
         let offset = 0;
-        const showMoreTags = Array.from(element.querySelectorAll('.services-filter__show-more-tags'))
+        const showMoreTags = Array.from(element.querySelectorAll('.services-filter__show-more-tags'));
+        const resultsNotFound = document.querySelector('.services-results__not-found');
 
         console.log('Action', actionURL);
 
@@ -30,10 +34,12 @@ export default function servicesFilter() {
             select.classList.toggle('active');
         });
 
-        showMoreTags.forEach(btn => btn.addEventListener('click', event => {
-            event.preventDefault();
-            btn.parentElement.classList.toggle('show-all');
-        }))
+        showMoreTags.forEach(btn =>
+            btn.addEventListener('click', event => {
+                event.preventDefault();
+                btn.parentElement.classList.toggle('show-all');
+            })
+        );
 
         document.addEventListener('click', event => {
             if (event.target.matches('.services-filter__category-select') || event.target.closest('.services-filter__category-select')) {
@@ -72,7 +78,7 @@ export default function servicesFilter() {
 
             selectText.textContent = radioValue;
 
-            console.log("CHECKED RADIO", checkedRadio)
+            console.log('CHECKED RADIO', checkedRadio);
 
             // const url = new URL(window.location);
             // url.searchParams.set('SECTION_ID', checkedRadio.querySelector('input').value);
@@ -132,8 +138,8 @@ export default function servicesFilter() {
                         const allTag = layer.querySelector('.js-all-tag');
                         allTag.checked = true;
                     }
-                })
-                
+                });
+
                 sendData();
             });
         });
@@ -150,6 +156,14 @@ export default function servicesFilter() {
                     console.log('Response', res.data);
 
                     results.innerHTML = '';
+
+                    if (resultsNotFound) {
+                        if (!res.data?.items?.length && !res.data?.sections?.items?.length) {
+                            resultsNotFound.style.display = 'block';
+                        } else {
+                            resultsNotFound.style.display = '';
+                        }
+                    }
 
                     if (res.data.items) {
                         const list = document.createElement('ol');
@@ -292,7 +306,19 @@ export default function servicesFilter() {
                 showMoreTags.forEach(btn => btn.parentElement.classList.remove('show-all'));
             }
 
-            
+            if (showTagsCloud) {
+                showTagsCloud.classList.add('active');
+            }
+
+            if (tagsNotFound) {
+                if (filteredTags.length) {
+                    tagsNotFound.style.display = '';
+                    tagsLayersContainer.style.display = '';
+                } else {
+                    tagsNotFound.style.display = 'block';
+                    tagsLayersContainer.style.display = 'none';
+                }
+            }
         };
 
         searchInput.addEventListener('input', () => {

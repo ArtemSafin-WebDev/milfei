@@ -2,10 +2,24 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-gap: 1rem;
+
+    @include breakpoint(mobile) {
+        grid-gap: .5rem;
+    }
 }
 
 .services-results-list-item {
     &::before {
         display: none;
     }
+}
+
+.services-results__not-found {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    display: none;
 }

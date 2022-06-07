@@ -4,6 +4,10 @@
 .services-device__content {
     padding: 1rem;
     padding-bottom: 0;
+
+    @include breakpoint(mobile) {
+        padding: 0;
+    }
 }
 
 .services-device__tags {
@@ -13,6 +17,10 @@
     padding: 1.6rem 2rem;
     border-bottom: 1px solid #e0e0e0;
     border-top: 1px solid #e0e0e0;
+
+    @include breakpoint(mobile) {
+        padding: 1rem;
+    }
 }
 
 .services-device__tag {
@@ -30,6 +38,19 @@
     border-radius: 5rem;
     padding-top: 0.8rem;
     flex-shrink: 0;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        padding: 0.8rem 1.8rem;
+        padding-top: 0.7rem;
+
+        .services-device__tags:not(.show-all) &:not(:nth-of-type(-n+9)) {
+            display: none;
+        }
+    }
 }
 
 .services-device__intro {
@@ -42,6 +63,14 @@
     font-weight: 400;
     font-size: 2.4rem;
     line-height: 3.6rem;
+
+    @include breakpoint(mobile) {
+        padding: 5rem 4rem;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
 }
 
 .services-device__intro-text {
@@ -60,6 +89,11 @@
     padding: 0 2rem;
     margin-bottom: 12rem;
 
+    @include breakpoint(mobile) {
+        padding: 0 1rem;
+        margin-bottom: 5rem;
+    }
+
     &--with-top-margin {
         margin-top: 5rem;
     }
@@ -72,10 +106,60 @@
     line-height: 90%;
     margin-bottom: 8rem;
     text-align: center;
+
+    @include breakpointMF(small-tablet) {
+        text-transform: lowercase;
+    }
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 3.2rem;
+        line-height: 90%;
+        margin-bottom: 3rem;
+    }
 }
 
 .services-device__results {
     padding-left: 2rem;
     padding-right: 2rem;
-    margin-bottom: 20rem;
+    margin-bottom: 5rem;
+
+    @include breakpoint(mobile) {
+        padding: 0 1rem;
+        margin-bottom: 2.4rem;
+    }
+}
+
+
+.services-device__show-more-tags {
+    border: 1px solid #e0e0e0;
+    display: block;
+    text-align: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+    padding: 0.5rem 1.6rem;
+    border-radius: 5rem;
+   
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        width: 3rem;
+        height: 3rem;
+        fill: var(--text-color);
+    }
+
+    .show-all & {
+        display: none;
+    }
+
+    @include breakpointMF(small-tablet) {
+        display: none;
+    }
 }
