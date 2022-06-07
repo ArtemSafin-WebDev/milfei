@@ -1,9 +1,17 @@
 .services-filter {
     margin-bottom: 4rem;
+    @include breakpoint(mobile) {
+        padding-top: 2rem;
+        margin-top: -4rem;
+    }
 }
 
 .services-filter__content {
     padding: 1rem;
+
+    @include breakpoint(mobile) {
+        padding: 0;
+    }
 }
 
 .services-filter__form {
@@ -12,6 +20,14 @@
 
 .services-filter__tags-layers {
     position: relative;
+
+    @include breakpoint(mobile) {
+        display: none;
+
+        .services-filter__tags-cloud.active ~ & {
+            display: block;
+        }
+    }
 }
 
 .services-filter__tags-layer {
@@ -40,12 +56,24 @@
     gap: 1rem;
     padding: 1.5rem 2rem;
     border-bottom: 1px solid #e0e0e0;
+
+    @include breakpoint(mobile) {
+        gap: 1rem;
+        padding: 1.5rem 1rem;
+    }
 }
 
 .services-filter__tag {
     flex-shrink: 0;
     user-select: none;
     cursor: pointer;
+
+
+    @include breakpoint(mobile) {
+        .services-filter__tags:not(.show-all) &:not(:nth-of-type(-n+9)) {
+            display: none;
+        }
+    }
 
     &.hidden {
         display: none;
@@ -70,6 +98,47 @@
     padding: 1rem 2rem;
     border-radius: 5rem;
     padding-top: 0.8rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        padding: 0.8rem 1.8rem;
+        padding-top: 0.7rem;
+    }
+}
+
+.services-filter__show-more-tags {
+    border: 1px solid #e0e0e0;
+    display: block;
+    text-align: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+    padding: 0.5rem 1.6rem;
+    border-radius: 5rem;
+   
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        width: 3rem;
+        height: 3rem;
+        fill: var(--text-color);
+    }
+
+    .show-all & {
+        display: none;
+    }
+
+    @include breakpointMF(small-tablet) {
+        display: none;
+    }
 }
 
 .services-filter__tag-input:checked ~ .services-filter__tag-content {
@@ -83,6 +152,49 @@
     padding-bottom: 3.5rem;
     padding-top: 6rem;
     background: #f9f9f9;
+
+    @include breakpoint(mobile) {
+        padding: 1rem;
+        padding-bottom: 3rem;
+    }
+}
+
+.services-filter__tags-cloud {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 6rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+    width: 100%;
+    color: #362e29;
+    justify-content: center;
+
+    @include breakpointMF(small-tablet) {
+        display: none;
+    }
+    svg {
+        transition: transform 0.2s;
+        width: 1rem;
+        height: 0.6rem;
+        flex-shrink: 0;
+        fill: currentColor;
+        margin-top: 0.4rem;
+        // transform: rotate(180deg);
+    }
+
+    &.active {
+        background: var(--text-color);
+        border-color: var(--text-color);
+        color: white;
+        svg {
+            transform: rotate(180deg);
+        }
+    }
 }
 
 .services-filter__results {
@@ -94,12 +206,23 @@
     height: 14rem;
     border: 1px solid #e0e0e0;
     position: relative;
+
+    @include breakpoint(mobile) {
+        height: 10rem;
+        border-left: none;
+        border-right: none;
+    }
 }
 
 .services-filter__category-select {
     width: 50%;
     flex-grow: 1;
     padding: 0 3rem;
+
+    @include breakpoint(mobile) {
+        padding-left: 1rem;
+        padding-right: 2rem;
+    }
 
     .search-shown & {
         display: none;
@@ -111,6 +234,10 @@
     flex-grow: 1;
     padding: 0 3rem;
     display: none;
+
+    @include breakpoint(mobile) {
+        padding: 0 2rem;
+    }
 
     .search-shown & {
         display: block;
@@ -125,6 +252,19 @@
     color: var(--text-color);
     height: 7rem;
     border-bottom: 1px solid var(--text-color);
+
+    @include placeholder {
+        color: #bdbdbd;
+    }
+
+    @include breakpoint(mobile) {
+        height: 10rem;
+        border: none;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 1.5rem;
+    }
 }
 
 .services-filter__category-select-current {
@@ -136,6 +276,13 @@
     align-items: center;
     gap: 1rem;
     cursor: pointer;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+    }
     svg {
         flex-shrink: 0;
         width: 3rem;
@@ -144,6 +291,11 @@
         margin-top: 1rem;
         transform: rotate(180deg);
         transition: transform 0.2s;
+
+        @include breakpoint(mobile) {
+            width: 4rem;
+            height: 4rem;
+        }
     }
 }
 
@@ -159,10 +311,19 @@
     flex-shrink: 0;
     transition: background-color 0.2s, border-color 0.2s;
     border-left: 1px solid #e0e0e0;
+
+    @include breakpoint(mobile) {
+        width: 8rem;
+        height: 10rem;
+    }
     &::before {
         content: '';
         display: block;
         padding-bottom: 100%;
+
+        @include breakpoint(mobile) {
+            display: none;
+        }
     }
 
     svg {
@@ -174,14 +335,18 @@
         height: 3rem;
         fill: var(--text-color);
         transition: fill 0.2s;
+
+        @include breakpoint(mobile) {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
     }
 }
 
 .services-filter__modes-btn--search {
-    .search-shown &  {
+    .search-shown & {
         display: none;
     }
-
 }
 .services-filter__modes-btn--close-search {
     display: none;
@@ -205,6 +370,10 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s, visibility 0s linear 0.4s;
+
+    @include breakpoint(mobile) {
+        width: 100%;
+    }
 
     &.shown {
         opacity: 1;
@@ -242,12 +411,27 @@
     font-size: 3rem;
     line-height: 1.2;
 
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+        padding: 0 2rem;
+        height: 10rem;
+    }
+
     svg {
         width: 3rem;
         height: 3rem;
         flex-shrink: 0;
         fill: currentColor;
         margin-top: 0.8rem;
+
+        @include breakpoint(mobile) {
+            width: 2rem;
+            height: 2rem;
+            margin-top: 0.5rem;
+        }
     }
 }
 
@@ -256,6 +440,6 @@
 }
 
 .services-filter__category-select-item-input:checked ~ .services-filter__category-select-item-content {
-    background: #000000;
+    background: var(--text-color);
     color: white;
 }

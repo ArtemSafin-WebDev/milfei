@@ -20,6 +20,7 @@ export default function servicesFilter() {
         const closeSearch = element.querySelector('.services-filter__modes-btn--close-search');
         const results = element.querySelector('.services-filter__results');
         let offset = 0;
+        const showMoreTags = Array.from(element.querySelectorAll('.services-filter__show-more-tags'))
 
         console.log('Action', actionURL);
 
@@ -28,6 +29,11 @@ export default function servicesFilter() {
             selectDropdown.classList.toggle('shown');
             select.classList.toggle('active');
         });
+
+        showMoreTags.forEach(btn => btn.addEventListener('click', event => {
+            event.preventDefault();
+            btn.parentElement.classList.toggle('show-all');
+        }))
 
         document.addEventListener('click', event => {
             if (event.target.matches('.services-filter__category-select') || event.target.closest('.services-filter__category-select')) {
@@ -119,7 +125,14 @@ export default function servicesFilter() {
                     allTagInGroup.checked = false;
                 }
 
-
+                tagsLayers.forEach(layer => {
+                    const layerTags = Array.from(layer.querySelectorAll('.services-filter__tag-input'));
+                    const checkedTag = layerTags.find(tag => tag.checked);
+                    if (!checkedTag) {
+                        const allTag = layer.querySelector('.js-all-tag');
+                        allTag.checked = true;
+                    }
+                })
                 
                 sendData();
             });
@@ -272,6 +285,14 @@ export default function servicesFilter() {
                     label.classList.add('hidden');
                 }
             });
+
+            if (value) {
+                showMoreTags.forEach(btn => btn.parentElement.classList.add('show-all'));
+            } else {
+                showMoreTags.forEach(btn => btn.parentElement.classList.remove('show-all'));
+            }
+
+            
         };
 
         searchInput.addEventListener('input', () => {

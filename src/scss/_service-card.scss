@@ -13,6 +13,24 @@
     min-height: 10rem;
     transition: color 0.2s, background-color 0.2s;
     z-index: 1;
+
+    @include breakpoint(mobile) {
+        padding: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+        grid-template-areas: 'number like' 'title price';
+        grid-gap: 1rem;
+        align-items: stretch;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        min-height: 10rem;
+        align-content: flex-start;
+        
+    }
     &:link,
     &:visited {
         color: var(--text-color);
@@ -21,6 +39,14 @@
         content: counter(ordered-list, decimal-leading-zero);
         width: 7.4rem;
         flex-shrink: 0;
+      
+
+        @include breakpoint(mobile) {
+            grid-area: number;
+            align-self: flex-start;
+            justify-self: flex-start;
+            width: auto;
+        }
     }
 
     &::after {
@@ -44,11 +70,11 @@
 
             .service-card__like-btn {
                 svg {
-                    fill: #E0E0E0;
+                    fill: #e0e0e0;
                 }
 
                 &:hover {
-                    color: #E0E0E0;
+                    color: #e0e0e0;
                 }
             }
         }
@@ -63,11 +89,11 @@
             }
             .service-card__like-btn {
                 svg {
-                    fill: #E0E0E0;
+                    fill: #e0e0e0;
                 }
 
                 &:hover {
-                    color: #E0E0E0;
+                    color: #e0e0e0;
                 }
             }
         }
@@ -77,6 +103,12 @@
 .service-card__content {
     width: 50%;
     flex-grow: 1;
+
+    @include breakpoint(mobile) {
+        display: contents;
+        width: 100%;
+        flex-grow: 0;
+    }
 }
 
 .service-card__title {
@@ -85,6 +117,16 @@
     font-size: 2rem;
     line-height: 2.2rem;
     max-width: 52rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        max-width: none;
+        grid-area: title;
+        align-self: flex-start;
+    }
 }
 
 .service-card__price {
@@ -94,6 +136,17 @@
     line-height: 2.4rem;
     width: 22rem;
     font-family: 'Arial', sans-serif;
+
+    @include breakpoint(mobile) {
+        width: auto;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        grid-area: price;
+        justify-self: flex-end;
+        align-self: flex-end;
+    }
 }
 
 .service-card__like-btn {
@@ -107,6 +160,14 @@
     justify-content: center;
     position: relative;
     z-index: 20;
+
+    @include breakpoint(mobile) {
+        width: 3rem;
+        height: 3rem;
+        grid-area: like;
+        justify-self: flex-end;
+        align-self: flex-start;
+    }
     &:link,
     &:visited {
         color: transparent;
@@ -117,6 +178,11 @@
         height: 3rem;
         fill: #e0e0e0;
         transition: fill 0.2s;
+
+        @include breakpoint(mobile) {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
     }
 
     &:hover,

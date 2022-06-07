@@ -13,6 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import servicesSlider from './servicesSlider';
 import servicesFilter from './servicesFilter';
 import forms from './forms';
+import tagsCloud from './tagsCloud';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     servicesSlider();
     servicesFilter();
     forms();
+    tagsCloud();
 });
 
 document.addEventListener('lazyloaded', () => {
