@@ -89,6 +89,11 @@
     margin: 0 calc(-1 * var(--content-padding));
     border: 1px solid #e0e0e0;
     margin-top: -1px;
+
+
+    @include breakpointMF(small-tablet) {
+        display: none;
+    }
 }
 
 .page-header__menu-btn {
