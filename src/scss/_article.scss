@@ -1,4 +1,10 @@
 .article {
+
+    @include breakpoint(mobile) {
+        &--negative-margin {
+            margin-top: -2rem;
+        }
+    }
 }
 
 .article__intro {
@@ -198,6 +204,8 @@
 
     @include breakpoint(mobile) {
         padding: 1.5rem 1rem;
+
+       
     }
 }
 
