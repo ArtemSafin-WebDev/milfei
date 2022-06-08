@@ -226,6 +226,12 @@
     white-space: nowrap;
     user-select: none;
 
+    &--active {
+        background-color: var(--text-color);
+        border-color: var(--text-color);
+        color: white;
+    }
+
     @include breakpoint(mobile) {
         font-style: normal;
         font-weight: 400;

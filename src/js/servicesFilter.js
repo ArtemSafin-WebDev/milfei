@@ -7,15 +7,10 @@ export default function servicesFilter() {
         const select = element.querySelector('.services-filter__category-select');
         const selectBtn = element.querySelector('.services-filter__category-select-current');
         const selectDropdown = element.querySelector('.services-filter__category-select-dropdown');
-        const selectText = element.querySelector('.services-filter__category-select-current-text');
-        const selectInputs = Array.from(element.querySelectorAll('.services-filter__category-select-item-input'));
-        const selectItems = Array.from(element.querySelectorAll('.services-filter__category-select-item'));
-        const tagsLayersContainer = element.querySelector('.services-filter__tags-layers');
-        const tagsLayers = Array.from(element.querySelectorAll('.services-filter__tags-layer'));
+        const tagsContainer = element.querySelector('.services-filter__tags')
         const form = element.querySelector('form');
         const actionURL = form.getAttribute('action');
         const allTags = Array.from(element.querySelectorAll('.services-filter__tag-input'));
-        const selectAllTags = Array.from(element.querySelectorAll('.js-all-tag'));
         const searchBtn = element.querySelector('.services-filter__modes-btn--search');
         const searchInput = element.querySelector('.services-filter__category-search-input');
         const closeSearch = element.querySelector('.services-filter__modes-btn--close-search');
@@ -50,95 +45,23 @@ export default function servicesFilter() {
             select.classList.remove('active');
         });
 
-        const setSelectValue = () => {
-            let checkedRadio = selectItems.find(item => {
-                const input = item.querySelector('input[type="radio"]');
-
-                return input.checked;
-            });
-            let checkedRadioIndex = selectItems.findIndex(item => {
-                const input = item.querySelector('input[type="radio"]');
-
-                return input.checked;
-            });
-
-            if (!checkedRadio) {
-                if (selectItems.length) {
-                    checkedRadio = selectItems[0];
-                    checkedRadio.querySelector('input[type="radio"]').checked = true;
-                    checkedRadioIndex = 0;
-
-                    console.log('Checked first radio');
-                } else {
-                    return;
-                }
-            }
-
-            const radioValue = checkedRadio.querySelector('.services-filter__category-select-item-text').textContent;
-
-            selectText.textContent = radioValue;
-
-            console.log('CHECKED RADIO', checkedRadio);
-
-            // const url = new URL(window.location);
-            // url.searchParams.set('SECTION_ID', checkedRadio.querySelector('input').value);
-            // window.history.pushState({}, '', url);
-
-            tagsLayers.forEach(layer => {
-                layer.classList.remove('active');
-                const layerInputs = Array.from(layer.querySelectorAll('input[type="checkbox"]'));
-                layerInputs.forEach(input => (input.disabled = true));
-            });
-
-            const currentTagsLayer = tagsLayers[checkedRadioIndex];
-
-            currentTagsLayer.classList.add('active');
-
-            const currentTags = Array.from(currentTagsLayer.querySelectorAll('input[type="checkbox"]'));
-
-            currentTags.forEach(tag => (tag.disabled = false));
-
-            offset = 0;
-
-            allTags.forEach(tag => (tag.checked = false));
-
-            selectAllTags.forEach(tag => (tag.checked = true));
-
-            sendData();
-        };
-
-        selectInputs.forEach(item => {
-            item.addEventListener('change', () => {
-                selectDropdown.classList.remove('shown');
-                select.classList.remove('active');
-
-                setSelectValue();
-            });
-        });
-
-        setSelectValue();
+  
 
         allTags.forEach(tag => {
             tag.addEventListener('change', () => {
                 if (tag.matches('.js-all-tag') && tag.checked) {
-                    const otherTagsInGroup = Array.from(
-                        tag.closest('.services-filter__tags-layer').querySelectorAll('.services-filter__tag-input:not(.js-all-tag)')
-                    );
-
-                    otherTagsInGroup.forEach(tag => (tag.checked = false));
+                    const tagsExceptAll = allTags.filter(tag => !tag.matches('.js-all-tag'))
+                    tagsExceptAll.forEach(tag => (tag.checked = false));
                 } else {
-                    const allTagInGroup = tag.closest('.services-filter__tags-layer').querySelector('.js-all-tag');
-                    allTagInGroup.checked = false;
+                    const allTag = allTags.find(tag => tag.matches('.js-all-tag'))
+                    allTag.checked = false;
                 }
 
-                tagsLayers.forEach(layer => {
-                    const layerTags = Array.from(layer.querySelectorAll('.services-filter__tag-input'));
-                    const checkedTag = layerTags.find(tag => tag.checked);
-                    if (!checkedTag) {
-                        const allTag = layer.querySelector('.js-all-tag');
-                        allTag.checked = true;
-                    }
-                });
+                const checkedTag = allTags.find(tag => tag.checked);
+                if (!checkedTag) {
+                    const allTag = allTags.find(tag => tag.matches('.js-all-tag'));
+                    allTag.checked = true;
+                }
 
                 sendData();
             });
@@ -159,8 +82,10 @@ export default function servicesFilter() {
 
                     if (resultsNotFound) {
                         if (!res.data?.items?.length && !res.data?.sections?.items?.length) {
+                            results.style.display = 'none';
                             resultsNotFound.style.display = 'block';
                         } else {
+                            results.style.display = '';
                             resultsNotFound.style.display = '';
                         }
                     }
@@ -267,18 +192,18 @@ export default function servicesFilter() {
                 });
         }
 
-        searchBtn.addEventListener('click', event => {
-            event.preventDefault();
-            element.classList.add('search-shown');
-        });
+        if (searchBtn) {
+            searchBtn.addEventListener('click', event => {
+                event.preventDefault();
+                element.classList.add('search-shown');
+            });
+        }
+
+       
 
         const filterTags = () => {
             const value = searchInput.value.trim().toLowerCase();
-
-            const tagsNotShowAll = allTags;
-            // const tagsNotShowAll = allTags.filter(tag => !tag.matches('.js-all-tag'));
-
-            const filteredTags = tagsNotShowAll.filter(tag => {
+            const filteredTags = allTags.filter(tag => {
                 const text = tag
                     .closest('.services-filter__tag')
                     .querySelector('.services-filter__tag-content')
@@ -291,7 +216,7 @@ export default function servicesFilter() {
                 return false;
             });
 
-            tagsNotShowAll.forEach(tag => {
+            allTags.forEach(tag => {
                 const label = tag.closest('.services-filter__tag');
                 if (filteredTags.includes(tag)) {
                     label.classList.remove('hidden');
@@ -313,24 +238,30 @@ export default function servicesFilter() {
             if (tagsNotFound) {
                 if (filteredTags.length) {
                     tagsNotFound.style.display = '';
-                    tagsLayersContainer.style.display = '';
+                    tagsContainer.style.display = '';
                 } else {
                     tagsNotFound.style.display = 'block';
-                    tagsLayersContainer.style.display = 'none';
+                    tagsContainer.style.display = 'none';
                 }
             }
         };
 
-        searchInput.addEventListener('input', () => {
-            filterTags();
-        });
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                filterTags();
+            });
+        }
 
-        closeSearch.addEventListener('click', event => {
-            event.preventDefault();
-            element.classList.remove('search-shown');
-            searchInput.value = '';
-            filterTags();
-        });
+   
+        if (closeSearch) {
+            closeSearch.addEventListener('click', event => {
+                event.preventDefault();
+                element.classList.remove('search-shown');
+                searchInput.value = '';
+                filterTags();
+            });
+        }
+      
 
         form.addEventListener('submit', event => {
             event.preventDefault();
