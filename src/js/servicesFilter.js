@@ -192,6 +192,8 @@ export default function servicesFilter() {
                 });
         }
 
+        sendData();
+
         if (searchBtn) {
             searchBtn.addEventListener('click', event => {
                 event.preventDefault();

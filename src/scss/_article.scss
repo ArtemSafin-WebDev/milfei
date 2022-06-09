@@ -230,6 +230,11 @@
         background-color: var(--text-color);
         border-color: var(--text-color);
         color: white;
+
+        &:link,
+        &:visited {
+            color: white;
+        }
     }
 
     @include breakpoint(mobile) {
@@ -249,6 +254,7 @@
         border-color: var(--text-color);
         color: white;
         background: var(--text-color);
+    
     }
 }
 
