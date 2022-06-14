@@ -83,6 +83,7 @@ export default function forms() {
                     .then(res => {
                         setTimeout(() => {
                             if (res.data.success) {
+                                message.classList.remove('has-error');
                                 message.textContent = res.data.message;
                                 setTimeout(() => {
                                     message.style.display = 'none';
