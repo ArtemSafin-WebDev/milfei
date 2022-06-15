@@ -39,6 +39,9 @@
         content: counter(ordered-list, decimal-leading-zero);
         width: 7.4rem;
         flex-shrink: 0;
+
+
+        display: none;
       
 
         @include breakpoint(mobile) {
