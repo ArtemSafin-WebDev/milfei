@@ -206,11 +206,33 @@
 .modal__callback-modal-form-fields {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-gap: 1rem;
+    grid-gap: 2.8rem;
     margin-bottom: 3rem;
 
     @include breakpoint(mobile) {
         margin-bottom: 2rem;
+        grid-gap: 2rem;
+    }
+}
+
+.modal__callback-modal-form-field {
+    position: relative;
+
+    .parsley-errors-list.filled {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        right: 0;
+        font-family: 'Arial';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        color: #eb5757;
+
+        @include breakpoint(mobile) {
+            margin-top: 0.1rem;
+        }
     }
 }
 
@@ -226,8 +248,13 @@
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 1.5rem;
+    transition: border-color 0.2s;
     @include placeholder {
         color: #bdbdbd;
+    }
+
+    &.parsley-error {
+        border-color: #eb5757;
     }
 }
 
@@ -254,6 +281,42 @@
     }
 }
 
+.modal__callback-return-back {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8rem;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 2.6rem;
+    color: var(--text-color);
+    display: block;
+    width: 100%;
+    border: 1px solid var(--text-color);
+    transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+    width: 100%;
+    // margin-bottom: 2rem;
+    // margin-top: 2rem;
+    &:link,
+    &:visited {
+        color: var(--text-color);
+    }
+
+    &:hover {
+        background-color: var(--text-color);
+        color: white;
+    }
+
+    @include breakpoint(mobile) {
+        height: auto;
+        padding: 2.5rem;
+        padding-top: 2rem;
+    }
+}
+
 .modal__callback-modal-form-text {
     font-style: normal;
     font-weight: 400;
@@ -263,6 +326,22 @@
     color: #828282;
     margin-top: 4.5rem;
     font-family: 'Arial', sans-serif;
+
+    a {
+        color: var(--text-color);
+      
+        transition: all .2s;
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        &:link,
+        &:visited {
+            color: var(--text-color);
+        }
+
+        &:hover {
+            text-decoration-color: var(--text-color);
+        }
+    }
     @include breakpoint(mobile) {
         font-style: normal;
         font-weight: 400;
@@ -281,7 +360,7 @@
     background: #ffffff;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
     text-align: center;
     padding: 3rem;
 

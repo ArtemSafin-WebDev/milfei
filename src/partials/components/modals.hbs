@@ -38,7 +38,7 @@
                 </button>
                 <div class="modal__callback-modal-form-text">
                     Нажимая на кнопку вы даете свое согласие на обработку
-                    своих персональных данных согласно политике конфиденциальности
+                    своих персональных данных согласно <a href="#">политике конфиденциальности</a>
                 </div>
                 <div class="modal__callback-modal-form-success">
                     <div class="modal__callback-modal-form-success-message">
@@ -59,11 +59,22 @@
                 </div>
                 <div class="modal__callback-modal-form-error">
                     <div class="modal__callback-modal-form-error-message">
+
+                        <svg width="14" height="14" aria-hidden="true" class="icon-not-ok">
+                            <use xlink:href="#not-ok"></use>
+                        </svg>
                         <h4 class="modal__callback-modal-form-error-heading">
                             произошла<br>
                             ошибка
                         </h4>
+                        <div class="modal__callback-modal-form-success-text">
+                            вероятно произошла какая-то ошибка,<br> пожалуйста заполните форму еще раз
+                        </div>
+                        <button class="modal__callback-return-back" type="button">
+                            вернуться к заполнению
+                        </button>
                     </div>
+
                 </div>
             </form>
         </div>

@@ -9,6 +9,7 @@ export default function forms() {
         const error = form.querySelector('.modal__callback-modal-form-error');
         const successMessage = form.querySelector('.modal__callback-modal-form-success-heading');
         const errorMessage = form.querySelector('.modal__callback-modal-form-error-heading');
+        const returnBtn = form.querySelector('.modal__callback-return-back')
         form.addEventListener('submit', event => {
             event.preventDefault();
             if (
@@ -55,6 +56,13 @@ export default function forms() {
                     });
             }
         });
+
+        if (returnBtn) {
+            returnBtn.addEventListener('click', event => {
+                event.preventDefault();
+                error.classList.remove('active');
+            })
+        }
     });
 
     const sendPhone = Array.from(document.querySelectorAll('.js-send-phone'));
