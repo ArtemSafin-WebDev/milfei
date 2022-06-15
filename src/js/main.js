@@ -15,6 +15,8 @@ import servicesFilter from './servicesFilter';
 import forms from './forms';
 import tagsCloud from './tagsCloud';
 import showMoreTags from './showMoreTags';
+import maps from './map';
+import fancybox from './fancybox';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
     forms();
     tagsCloud();
     showMoreTags();
+    maps();
+    fancybox();
 });
 
 document.addEventListener('lazyloaded', () => {

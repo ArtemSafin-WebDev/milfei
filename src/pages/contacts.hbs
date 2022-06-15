@@ -1,0 +1,156 @@
+{{#extend "layout"}}
+{{#content "main"}}
+
+
+<section class="service-intro">
+    <div class="service-intro__bg service-intro__bg--no-overlay">
+        <img src="img/placeholder-bg.svg" alt="" class="service-intro__bg-image">
+        {{!-- <img src="img/intro-decor.svg" alt="" class="service-intro__decor-image"> --}}
+    </div>
+
+    <div class="container">
+        <div class="service-intro__content">
+
+            <div class="service-intro__breadcrumbs">
+                <a href="#">
+                    Главная
+                </a>
+                /
+                <a href="#">
+                    Контакты
+                </a>
+
+            </div>
+            <div class="service-intro__bottom-row">
+
+                <div class="service-intro__wrapper">
+                    <h1 class="service-intro__heading service-intro__heading--centered service-intro__heading--dark">
+                        контакты
+                    </h1>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="contacts">
+    <div class="container">
+        <div class="contacts__content">
+            <ul class="contacts__list">
+                <li class="contacts__list-item">
+                    <div class="contacts__card">
+                        <div class="contacts__card-content">
+                            <div class="contacts__card-info">
+                                <h3 class="contacts__card-title">
+                                    Москва-сити
+                                </h3>
+                                <div class="contacts__card-office">
+                                    МФК Город Столиц, этаж 1
+                                </div>
+                            </div>
+                            <div class="contacts__card-address">
+                                Москва, ул. Пресненская<br> набережная 8, стр 1
+                            </div>
+                            <a href="tel:+7 (495) 477–5902" class="contacts__card-phone">+7 (495) 477–5902</a>
+                            <div class="contacts__card-metro">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-metro">
+                                    <use xlink:href="#metro"></use>
+                                </svg>
+                                Деловой центр
+                            </div>
+                            <a href="#callback-modal" class="contacts__card-link">
+                                запись
+                            </a>
+                        </div>
+                        <div class="contacts__map js-map" data-coords="55.747115, 37.539087"
+                            data-center="55.747115, 37.539087" data-zoom="14">
+                            <div class="contacts__map-element js-map-element">
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="contacts__list-item">
+                    <div class="contacts__card">
+                        <div class="contacts__card-content">
+                            <div class="contacts__card-info">
+                                <h3 class="contacts__card-title">
+                                    Хамовники
+                                </h3>
+
+                            </div>
+                            <div class="contacts__card-address">
+                                Москва, ул. 3-я<br> Фрунзенская, 19, этаж 1
+                            </div>
+                            <a href="tel:+7 (495) 477–5902" class="contacts__card-phone">+7 (495) 477–5902</a>
+                            <div class="contacts__card-metro">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-metro">
+                                    <use xlink:href="#metro"></use>
+                                </svg>
+                                Фрунзенская
+                            </div>
+                            <a href="#callback-modal" class="contacts__card-link">
+                                запись
+                            </a>
+                        </div>
+                        <div class="contacts__map js-map" data-coords="55.723318, 37.571965"
+                            data-center="55.723318, 37.571965" data-zoom="14">
+                            <div class="contacts__map-element js-map-element">
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="contacts__large-text">
+                <p>
+                    При выезде на дом, клиент оплачивает двойной тариф специалиста
+                    и такси в обе стороны.
+                </p>
+            </div>
+
+            <div class="accordions accordions--no-gap contacts__accordions">
+                <div class="accordions__accordion accordions__accordion--transparent js-accordion">
+                    <div class="accordions__accordion-btn js-accordion-btn">
+                        <span class="accordions__accordion-btn-text">
+                            Лицензия медицинской деятельности ООО "Аймант"
+                        </span>
+
+                        <svg width="14" height="14" aria-hidden="true" class="icon-caret">
+                            <use xlink:href="#caret"></use>
+                        </svg>
+                    </div>
+                    <div class="accordions__accordion-content js-accordion-content">
+                        <div
+                            class="accordions__accordion-content-inner accordions__accordion-content-inner--small-padding">
+                            <div class="contacts__certificates">
+                                <a href="img/certificates/1.jpg" class="contacts__certificates-card"
+                                    data-fancybox="certificates">
+                                    <img src="img/certificates/1.jpg" alt="" class="contacts__certificates-card-image">
+                                </a>
+                                <a href="img/certificates/2.jpg" class="contacts__certificates-card"
+                                    data-fancybox="certificates">
+                                    <img src="img/certificates/2.jpg" alt="" class="contacts__certificates-card-image">
+                                </a>
+                                <a href="img/certificates/3.jpg" class="contacts__certificates-card"
+                                    data-fancybox="certificates">
+                                    <img src="img/certificates/3.jpg" alt="" class="contacts__certificates-card-image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{{/content}}
+{{/extend}}

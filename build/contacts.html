@@ -8,7 +8,7 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="css/styles.css" />
     <title>
-        Услуги
+        
     </title>
 </head>
 
@@ -109,9 +109,8 @@
 
 
 <section class="service-intro">
-    <div class="service-intro__bg">
-        <img src="img/service-intro-2.jpg" alt="" class="service-intro__bg-image">
-        <img src="img/intro-decor.svg" alt="" class="service-intro__decor-image">
+    <div class="service-intro__bg service-intro__bg--no-overlay">
+        <img src="img/placeholder-bg.svg" alt="" class="service-intro__bg-image">
     </div>
 
     <div class="container">
@@ -122,167 +121,137 @@
                     Главная
                 </a>
                 /
-                <a href="#" class="active">
-                    парикмахерские услуги
+                <a href="#">
+                    Контакты
                 </a>
+
             </div>
             <div class="service-intro__bottom-row">
-                <a href="#" class="star-btn">
-                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                        <use xlink:href="#star"></use>
-                    </svg>
-                    весь прайс
-                </a>
-                <h1 class="service-intro__heading">
-                    косметология
-                </h1>
-                <a href="#" class="circle-btn">
-                    запись
-                </a>
+
+                <div class="service-intro__wrapper">
+                    <h1 class="service-intro__heading service-intro__heading--centered service-intro__heading--dark">
+                        контакты
+                    </h1>
+
+                </div>
+
+
             </div>
         </div>
     </div>
 </section>
 
-<section class="services-slider js-services-slider">
+
+<section class="contacts">
     <div class="container">
-        <div class="services-slider__content">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="services-slider__card">
-                            <div class="services-slider__card-bg">
-                                <img src="img/service-card.jpg" alt="" class="services-slider__card-bg-image">
+        <div class="contacts__content">
+            <ul class="contacts__list">
+                <li class="contacts__list-item">
+                    <div class="contacts__card">
+                        <div class="contacts__card-content">
+                            <div class="contacts__card-info">
+                                <h3 class="contacts__card-title">
+                                    Москва-сити
+                                </h3>
+                                <div class="contacts__card-office">
+                                    МФК Город Столиц, этаж 1
+                                </div>
                             </div>
-                       
-                            <h4 class="services-slider__card-title">
-                                акции
-                            </h4>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-arrow-right">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
+                            <div class="contacts__card-address">
+                                Москва, ул. Пресненская<br> набережная 8, стр 1
+                            </div>
+                            <a href="tel:+7 (495) 477–5902" class="contacts__card-phone">+7 (495) 477–5902</a>
+                            <div class="contacts__card-metro">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-metro">
+                                    <use xlink:href="#metro"></use>
+                                </svg>
+                                Деловой центр
+                            </div>
+                            <a href="#callback-modal" class="contacts__card-link">
+                                запись
+                            </a>
+                        </div>
+                        <div class="contacts__map js-map" data-coords="55.747115, 37.539087"
+                            data-center="55.747115, 37.539087" data-zoom="14">
+                            <div class="contacts__map-element js-map-element">
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="services-slider__card">
-                            <div class="services-slider__card-bg">
-                                <img src="img/service-card.jpg" alt="" class="services-slider__card-bg-image">
+                </li>
+                <li class="contacts__list-item">
+                    <div class="contacts__card">
+                        <div class="contacts__card-content">
+                            <div class="contacts__card-info">
+                                <h3 class="contacts__card-title">
+                                    Хамовники
+                                </h3>
+
                             </div>
-                          
-                            <h4 class="services-slider__card-title">
-                                аппаратная
-                            </h4>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-arrow-right">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
+                            <div class="contacts__card-address">
+                                Москва, ул. 3-я<br> Фрунзенская, 19, этаж 1
+                            </div>
+                            <a href="tel:+7 (495) 477–5902" class="contacts__card-phone">+7 (495) 477–5902</a>
+                            <div class="contacts__card-metro">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-metro">
+                                    <use xlink:href="#metro"></use>
+                                </svg>
+                                Фрунзенская
+                            </div>
+                            <a href="#callback-modal" class="contacts__card-link">
+                                запись
+                            </a>
+                        </div>
+                        <div class="contacts__map js-map" data-coords="55.723318, 37.571965"
+                            data-center="55.723318, 37.571965" data-zoom="14">
+                            <div class="contacts__map-element js-map-element">
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="services-slider__card">
-                            <div class="services-slider__card-bg">
-                                <img src="img/service-card.jpg" alt="" class="services-slider__card-bg-image">
-                            </div>
-                         
-                            <h4 class="services-slider__card-title">
-                                инъекционная
-                            </h4>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-arrow-right">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
+                </li>
+            </ul>
+            <div class="contacts__large-text">
+                <p>
+                    При выезде на дом, клиент оплачивает двойной тариф специалиста
+                    и такси в обе стороны.
+                </p>
+            </div>
+
+            <div class="accordions accordions--no-gap contacts__accordions">
+                <div class="accordions__accordion accordions__accordion--transparent js-accordion">
+                    <div class="accordions__accordion-btn js-accordion-btn">
+                        <span class="accordions__accordion-btn-text">
+                            Лицензия медицинской деятельности ООО "Аймант"
+                        </span>
+
+                        <svg width="14" height="14" aria-hidden="true" class="icon-caret">
+                            <use xlink:href="#caret"></use>
+                        </svg>
                     </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="services-slider__card">
-                            <div class="services-slider__card-bg">
-                                <img src="img/service-card.jpg" alt="" class="services-slider__card-bg-image">
+                    <div class="accordions__accordion-content js-accordion-content">
+                        <div
+                            class="accordions__accordion-content-inner accordions__accordion-content-inner--small-padding">
+                            <div class="contacts__certificates">
+                                <a href="img/certificates/1.jpg" class="contacts__certificates-card"
+                                    data-fancybox="certificates">
+                                    <img src="img/certificates/1.jpg" alt="" class="contacts__certificates-card-image">
+                                </a>
+                                <a href="img/certificates/2.jpg" class="contacts__certificates-card"
+                                    data-fancybox="certificates">
+                                    <img src="img/certificates/2.jpg" alt="" class="contacts__certificates-card-image">
+                                </a>
+                                <a href="img/certificates/3.jpg" class="contacts__certificates-card"
+                                    data-fancybox="certificates">
+                                    <img src="img/certificates/3.jpg" alt="" class="contacts__certificates-card-image">
+                                </a>
                             </div>
-                     
-                            <h4 class="services-slider__card-title">
-                                эстетическая
-                            </h4>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-arrow-right">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="services-slider__card">
-                            <div class="services-slider__card-bg">
-                                <img src="img/service-card.jpg" alt="" class="services-slider__card-bg-image">
-                            </div>
-                         
-                            <h4 class="services-slider__card-title">
-                                акции
-                            </h4>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-arrow-right">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="services-slider__card">
-                            <div class="services-slider__card-bg">
-                                <img src="img/service-card.jpg" alt="" class="services-slider__card-bg-image">
-                            </div>
-                        
-                            <h4 class="services-slider__card-title">
-                                аппаратная
-                            </h4>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-arrow-right">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="services-slider__card">
-                            <div class="services-slider__card-bg">
-                                <img src="img/service-card.jpg" alt="" class="services-slider__card-bg-image">
-                            </div>
-                          
-                            <h4 class="services-slider__card-title">
-                                инъекционная
-                            </h4>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-arrow-right">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="services-slider__card">
-                            <div class="services-slider__card-bg">
-                                <img src="img/service-card.jpg" alt="" class="services-slider__card-bg-image">
-                            </div>
-                         
-                            <h4 class="services-slider__card-title">
-                                эстетическая
-                            </h4>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-arrow-right">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="services-slider__progress">
+
 
             </div>
-
-        </div>
-    </div>
-</section>
-
-<section class="services-text">
-    <div class="container">
-        <div class="services-text__content">
-            <p>
-                Аппаратная косметология в Москве – эффективная, безопасная замена инвазивным манипуляциям и пластическим
-                операциям. Она представляет собой физиологическую методику воздействия на ткани посредством специального
-                оборудования.
-            </p>
-            <p>
-                Значительный плюс таких процедур – безопасность, отсутствие возрастных ограничений, универсальность,
-                комплексное решение проблем без хирургического вмешательства.
-            </p>
         </div>
     </div>
 </section>
