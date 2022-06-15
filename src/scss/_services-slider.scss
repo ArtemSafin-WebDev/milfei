@@ -44,10 +44,13 @@
     position: relative;
     z-index: 1;
     color: var(--text-color);
+    padding-top: 15rem;
 
     @include breakpoint(mobile) {
         min-height: 40rem;
+       
         padding: 2rem;
+        padding-top: 12rem;
     }
 
     svg {

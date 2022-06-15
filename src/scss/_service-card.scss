@@ -41,9 +41,6 @@
         flex-shrink: 0;
 
 
-        display: none;
-      
-
         @include breakpoint(mobile) {
             grid-area: number;
             align-self: flex-start;
