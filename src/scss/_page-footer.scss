@@ -16,7 +16,7 @@
         grid-template-columns: minmax(0, 1fr) minmax(0, auto);
         grid-gap: 3.5rem;
         align-items: stretch;
-        grid-template-areas: 'logo social' 'policy copyright';
+        grid-template-areas: 'logo social' 'info info' 'policy copyright';
         display: grid;
        
     }
@@ -101,6 +101,22 @@
     }
 }
 
+.page-footer__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-left: auto;
+    
+
+    .page-footer__policy-link {
+        margin-left: 0;
+    }
+
+    @include breakpoint(mobile) {
+        display: contents;
+    }
+}
+
 .page-footer__policy-link {
     font-style: normal;
     font-weight: 400;
@@ -150,5 +166,16 @@
         font-size: 1rem;
         line-height: 1.8rem;
         justify-self: flex-start;
+    }
+}
+
+
+.page-footer__info-text {
+    max-width: 40rem;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    color: #e0e0e0;
+    @include breakpoint(mobile) {
+        grid-area: info;
     }
 }

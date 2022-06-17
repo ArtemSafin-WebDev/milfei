@@ -75,6 +75,10 @@
         }
         .services-slider__card-bg {
             opacity: 1;
+
+            &::after {
+                opacity: 0.5;
+            }
         }
 
         svg {

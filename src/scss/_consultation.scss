@@ -152,6 +152,19 @@
     padding-bottom: 3rem;
     padding-top: 3rem;
     gap: 1rem;
+    overflow: hidden;
+}
+
+
+.to-reveal {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    // transform: translateY(2rem);
+
+    &.revealed {
+        display: block;
+    }
 }
 
 .consultation__chat-message {
@@ -178,6 +191,19 @@
         border: 1px solid #ffcbcb;
         color: #ff6262;
     }
+}
+
+
+.consultation__chat-message.dots {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    
+}
+
+.consultation__chat-message--fit-content {
+    
+    width: min-content;
 }
 
 .consultation__chat-form {

@@ -17,6 +17,7 @@ import tagsCloud from './tagsCloud';
 import showMoreTags from './showMoreTags';
 import maps from './map';
 import fancybox from './fancybox';
+import chat from './chat';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showMoreTags();
     maps();
     fancybox();
+    chat();
 });
 
 document.addEventListener('lazyloaded', () => {

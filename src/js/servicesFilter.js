@@ -20,6 +20,7 @@ export default function servicesFilter() {
         let offset = 0;
         const showMoreTags = Array.from(element.querySelectorAll('.services-filter__show-more-tags'));
         const resultsNotFound = document.querySelector('.services-results__not-found');
+        const loader = element.querySelector('.loader')
 
         console.log('Action', actionURL);
 
@@ -70,6 +71,7 @@ export default function servicesFilter() {
         function sendData() {
             const formData = new FormData(form);
             formData.append('offset', offset);
+            loader.classList.remove('hidden');
             axios({
                 method: 'post',
                 url: actionURL,
@@ -77,7 +79,7 @@ export default function servicesFilter() {
             })
                 .then(res => {
                     console.log('Response', res.data);
-
+                    loader.classList.add('hidden');
                     results.innerHTML = '';
 
                     if (resultsNotFound) {
@@ -188,6 +190,7 @@ export default function servicesFilter() {
                     }
                 })
                 .catch(err => {
+                    loader.classList.add('hidden');
                     console.error(err);
                 });
         }
