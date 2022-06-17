@@ -7,7 +7,7 @@ export default function servicesFilter() {
         const select = element.querySelector('.services-filter__category-select');
         const selectBtn = element.querySelector('.services-filter__category-select-current');
         const selectDropdown = element.querySelector('.services-filter__category-select-dropdown');
-        const tagsContainer = element.querySelector('.services-filter__tags')
+        const tagsContainer = element.querySelector('.services-filter__tags');
         const form = element.querySelector('form');
         const actionURL = form.getAttribute('action');
         const allTags = Array.from(element.querySelectorAll('.services-filter__tag-input'));
@@ -20,7 +20,7 @@ export default function servicesFilter() {
         let offset = 0;
         const showMoreTags = Array.from(element.querySelectorAll('.services-filter__show-more-tags'));
         const resultsNotFound = document.querySelector('.services-results__not-found');
-        const loader = element.querySelector('.loader')
+        const loader = element.querySelector('.loader');
 
         console.log('Action', actionURL);
 
@@ -46,15 +46,13 @@ export default function servicesFilter() {
             select.classList.remove('active');
         });
 
-  
-
         allTags.forEach(tag => {
             tag.addEventListener('change', () => {
                 if (tag.matches('.js-all-tag') && tag.checked) {
-                    const tagsExceptAll = allTags.filter(tag => !tag.matches('.js-all-tag'))
+                    const tagsExceptAll = allTags.filter(tag => !tag.matches('.js-all-tag'));
                     tagsExceptAll.forEach(tag => (tag.checked = false));
                 } else {
-                    const allTag = allTags.find(tag => tag.matches('.js-all-tag'))
+                    const allTag = allTags.find(tag => tag.matches('.js-all-tag'));
                     allTag.checked = false;
                 }
 
@@ -81,6 +79,10 @@ export default function servicesFilter() {
                     console.log('Response', res.data);
                     loader.classList.add('hidden');
                     results.innerHTML = '';
+
+                    if (typeof window.ym !== 'undefined') {
+                        window.ym(89214903, 'reachGoal', 'lead');
+                    }
 
                     if (resultsNotFound) {
                         if (!res.data?.items?.length && !res.data?.sections?.items?.length) {
@@ -204,8 +206,6 @@ export default function servicesFilter() {
             });
         }
 
-       
-
         const filterTags = () => {
             const value = searchInput.value.trim().toLowerCase();
             const filteredTags = allTags.filter(tag => {
@@ -257,7 +257,6 @@ export default function servicesFilter() {
             });
         }
 
-   
         if (closeSearch) {
             closeSearch.addEventListener('click', event => {
                 event.preventDefault();
@@ -266,7 +265,6 @@ export default function servicesFilter() {
                 filterTags();
             });
         }
-      
 
         form.addEventListener('submit', event => {
             event.preventDefault();
