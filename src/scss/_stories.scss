@@ -1,0 +1,199 @@
+.stories {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: 900;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    padding: var(--content-padding);
+    background: linear-gradient(180deg, rgba(#c4c4c4, 0.8) 0%, rgba(#e4e4e4, 0.8) 100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0s linear 0.4s;
+
+    @include noScrollbar();
+
+    &:not(.active) {
+        right: calc(-1 * var(--sb-width, 0));
+    }
+
+    &.active {
+        opacity: 1;
+        visibility: inherit;
+        transition: opacity 0.4s, visibility 0.4s;
+    }
+}
+
+.stories__inner {
+    width: 100%;
+    margin: auto;
+    max-width: 30rem;
+    box-shadow: 0px 0.4rem 5rem rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.stories__slider {
+    position: relative;
+}
+
+.stories__slider-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    color: white;
+    position: relative;
+    z-index: 1;
+    user-select: none;
+    &:link,
+    &:visited {
+        color: white;
+    }
+    &::before {
+        content: '';
+        display: block;
+        padding-bottom: 180%;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+}
+
+.stories__slider-card-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--text-color);
+}
+
+.stories__slider-card-bg-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.stories__slider-card-content {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 1rem;
+}
+
+.stories__slider-card-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stories__slider-card-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+}
+
+.stories__slider-card-category-image-container {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to bottom, #F584CF, #9A5DD8);
+    margin-top: 0.2rem;
+}
+
+.stories__slider-card-category-image-wrapper {
+    position: absolute;
+    inset: 0.1rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.stories__slider-card-category-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.stories__slider-close {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    right: 1rem;
+    top: 3.3rem;
+    z-index: 40;
+    svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: #362e29;
+        transition: fill 0.2s;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        svg {
+            fill: white;
+        }
+    }
+}
+
+.stories__slider-card-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.6rem;
+    line-height: 90%;
+    text-transform: lowercase;
+    text-shadow: 0px 0px 6rem rgba(185, 185, 185, 0.4);
+    margin-top: auto;
+}
+
+
+.stories__slider-pagination {
+    position: absolute;
+    top: 1.6rem !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    z-index: 40;
+    bottom: auto !important;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+
+    .swiper-pagination-bullet {
+        width: 0.3rem;
+        height: 0.3rem;
+        flex-grow: 1;
+        margin: 0;
+        background-color: rgba(#FFFFFF, .5);
+        opacity: 1;
+        transition: background-color .2s;
+        border-radius: 0;
+        margin: 0 !important;
+
+        &.swiper-pagination-bullet-active {
+            background-color: white;
+        }
+    }
+}

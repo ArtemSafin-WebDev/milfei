@@ -1,0 +1,70 @@
+.stories-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+    color: var(--text-color);
+    gap: 0.8rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+    &:link,
+    &:visited {
+        color: var(--text-color);
+    }
+    &--large {
+        .stories-btn__icon {
+            width: 8rem;
+            height: 8rem;
+
+            @include breakpoint(mobile) {
+                width: 6rem;
+                height: 6rem;
+            }
+        }
+
+        .stories-btn__image-wrapper {
+            inset: 0.3rem;
+
+            @include breakpoint(mobile) {
+                inset: .2rem;
+            }
+        }
+    }
+}
+
+.stories-btn__icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to bottom, #f584cf, #9a5dd8);
+    margin-top: 0.2rem;
+}
+
+.stories-btn__image-wrapper {
+    position: absolute;
+    inset: 0.2rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.stories-btn__image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

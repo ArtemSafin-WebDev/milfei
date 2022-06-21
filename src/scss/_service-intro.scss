@@ -236,3 +236,19 @@
         margin-bottom: 3rem;
     }
 }
+
+
+.service-intro__stories {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    justify-content: center;
+
+    @include breakpoint(mobile) {
+        position: absolute;
+        top: 4rem;
+        left: var(--content-padding);
+        right: var(--content-padding);
+        gap: 1rem;
+    }
+}

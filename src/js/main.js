@@ -19,6 +19,7 @@ import maps from './map';
 import fancybox from './fancybox';
 import chat from './chat';
 import selectService from './selectService';
+import storiesSlider from './storiesSlider';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fancybox();
     chat();
     selectService();
+    storiesSlider();
 });
 
 document.addEventListener('lazyloaded', () => {
