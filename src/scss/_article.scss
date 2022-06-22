@@ -1,5 +1,4 @@
 .article {
-
     @include breakpoint(mobile) {
         &--negative-margin {
             margin-top: -2rem;
@@ -204,8 +203,6 @@
 
     @include breakpoint(mobile) {
         padding: 1.5rem 1rem;
-
-       
     }
 }
 
@@ -245,7 +242,7 @@
         padding: 0.8rem 1.8rem;
         padding-top: 0.7rem;
 
-        .article__tags-content:not(.show-all) &:not(:nth-of-type(-n+9)) {
+        .article__tags-content:not(.show-all) &:not(:nth-of-type(-n + 9)) {
             display: none;
         }
     }
@@ -254,7 +251,6 @@
         border-color: var(--text-color);
         color: white;
         background: var(--text-color);
-    
     }
 }
 
@@ -318,11 +314,18 @@
         }
     }
 
+    blockquote {
+        padding: 1.5rem 2.5rem;
+        border: 1px solid #dedede;
+        margin: 1.9rem auto;
+        font-style: italic;
+    }
+
     img {
         display: block;
         width: auto;
         height: auto;
-        margin: 8rem 0;
+        margin: 8rem auto;
 
         @include breakpoint(mobile) {
             margin: 5rem 0;
@@ -360,7 +363,6 @@
     }
 }
 
-
 .article__show-more-tags {
     border: 1px solid #e0e0e0;
     display: block;
@@ -374,7 +376,7 @@
     transition: color 0.2s, border-color 0.2s, background-color 0.2s;
     padding: 0.5rem 1.6rem;
     border-radius: 5rem;
-   
+
     display: inline-flex;
     align-items: center;
     justify-content: center;

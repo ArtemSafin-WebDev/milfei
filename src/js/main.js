@@ -20,11 +20,13 @@ import fancybox from './fancybox';
 import chat from './chat';
 import selectService from './selectService';
 import storiesSlider from './storiesSlider';
+import fixedHeader from './fixedHeader';
 
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', function () {
     detectTouch();
+    fixedHeader();
     setScrollbarWidth();
     masks();
     validation();
@@ -43,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     chat();
     selectService();
     storiesSlider();
+   
 });
 
 document.addEventListener('lazyloaded', () => {

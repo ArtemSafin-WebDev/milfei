@@ -4,7 +4,7 @@
     top: 0;
     right: 0;
     z-index: 500;
-
+   
     &::before {
         content: '';
         position: absolute;
@@ -14,7 +14,19 @@
         height: 100%;
         background: #ffffff;
         z-index: 50;
+        transition: opacity .2s;
     }
+
+    body.compact-header:not(.fixed-header):not(.mobile-menu-open) & {
+        &::before {
+            opacity: 0;
+        }
+    }
+
+ 
+
+
+    
 
     .modal-open &,
     .mobile-menu-open & {
@@ -198,7 +210,9 @@
     z-index: 60;
     transition: background-color 0.2s, color 0.2s;
     align-self: stretch;
-
+    background-color: #fff;
+    opacity: 1;
+    visibility: visible;
     @include breakpoint(mobile) {
         width: 7rem;
         height: 6rem;
@@ -252,6 +266,12 @@
     position: relative;
     z-index: 1;
 
+    body.compact-header:not(.fixed-header):not(.mobile-menu-open) & {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .2s, visibility 0s linear .2s;
+    }
+
     @include breakpoint(mobile) {
         display: none;
     }
@@ -302,6 +322,13 @@
     align-items: center;
     justify-content: space-between;
     gap: 1.6rem;
+    transition: opacity .2s, visibility .2s;
+
+    body.compact-header:not(.fixed-header):not(.mobile-menu-open) & {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .2s, visibility 0s linear .2s;
+    }
 
     @include breakpoint(mobile) {
         margin-left: auto;

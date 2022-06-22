@@ -11,6 +11,10 @@
     flex-direction: column;
     overflow: hidden;
     padding-top: 6rem;
+
+    body.compact-header & {
+        padding-top: 0;
+    }
 }
 
 .page-main {
