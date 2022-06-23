@@ -250,5 +250,7 @@
         left: var(--content-padding);
         right: var(--content-padding);
         gap: 1rem;
+
+        position: static;
     }
 }

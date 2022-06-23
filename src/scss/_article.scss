@@ -394,3 +394,133 @@
         display: none;
     }
 }
+
+.article__products {
+    display: flex;
+    grid-gap: 1rem;
+    align-items: flex-start;
+    margin: 8rem 0;
+
+    @include breakpoint(mobile) {
+        margin: 5rem 0;
+    }
+
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.article__product {
+    position: relative;
+    img {
+        margin: 0;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.article__product {
+    width: 50%;
+    flex-grow: 1;
+}
+
+.article__product-prices {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+
+    @include breakpoint(mobile) {
+        left: 1rem;
+        bottom: 1rem;
+    }
+}
+
+.article__product-price {
+}
+
+.article__product-price-amount {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    text-align: center;
+    display: block;
+    position: relative;
+    padding: 2rem;
+    background-color: #fff;
+    font-family: 'Arial', sans-serif;
+
+    @include breakpoint(mobile) {
+        padding: 0.5rem;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+}
+
+.article__product-price-buy-link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    display: block;
+    position: relative;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    display: block;
+    background: #362e29;
+    color: white;
+    color: var(--text-color);
+    transition: background-color 0.2s, color 0.2s;
+    padding: 1.5rem;
+    z-index: 1;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 1.2;
+        padding: 0.5rem;
+    }
+
+    &:link,
+    &:visited {
+        color: white;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(180deg, #c4c4c4 0%, #e4e4e4 100%);
+        transition: opacity 0.2s;
+        opacity: 0;
+    }
+
+    &:hover {
+        color: #ffffff;
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    &:active {
+        color: #362e29;
+        background-color: white;
+        &::before {
+            opacity: 0;
+        }
+    }
+}

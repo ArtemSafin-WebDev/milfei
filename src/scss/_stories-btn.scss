@@ -27,8 +27,8 @@
             height: 8rem;
 
             @include breakpoint(mobile) {
-                width: 6rem;
-                height: 6rem;
+                width: 9rem;
+                height: 9rem;
             }
         }
 
@@ -67,4 +67,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+
+.stories-btn__text {
+    @include breakpoint(mobile) {
+        display: none;
+    }
 }
