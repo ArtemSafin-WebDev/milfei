@@ -166,6 +166,10 @@
     line-height: 90%;
     text-transform: lowercase;
     text-shadow: 0px 0px 6rem rgba(185, 185, 185, 0.4);
+
+    &--centered {
+        margin-bottom: auto;
+    }
 }
 
 .stories__slider-pagination {

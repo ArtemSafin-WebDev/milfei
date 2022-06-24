@@ -397,12 +397,15 @@
 
 .article__products {
     display: flex;
-    grid-gap: 1rem;
     align-items: flex-start;
+    gap: 1rem;
+    justify-content: center;
+    
     margin: 8rem 0;
 
     @include breakpoint(mobile) {
         margin: 5rem 0;
+       
     }
 
     &:first-child {
@@ -424,7 +427,9 @@
 
 .article__product {
     width: 50%;
-    flex-grow: 1;
+    .article__products--flexible & {
+        flex-grow: 1;
+    }
 }
 
 .article__product-prices {

@@ -20,4 +20,19 @@ export default function selectService() {
             }
         });
     }
+    const promoInput = document.querySelector('.js-selected-promo');
+    const promoSelector = '.promo__card[href^="#"]';
+    if (promoInput) {
+        document.addEventListener('click', event => {
+            if (event.target.matches(promoSelector) || event.target.closest(promoSelector)) {
+                const link = event.target.matches(promoSelector) ? event.target : event.target.closest(promoSelector);
+                const title = link.querySelector('.promo__card-card-title');
+                if (title) {
+                    promoInput.value = title.textContent;
+                } else {
+                    console.log('No title');
+                }
+            }
+        });
+    }
 }
