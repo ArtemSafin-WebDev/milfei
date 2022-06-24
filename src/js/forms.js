@@ -26,6 +26,10 @@ export default function forms() {
                 })
                     .then(res => {
                         if (res.data.success) {
+
+                            if (typeof window.ym !== 'undefined') {
+                                window.ym(89214903, 'reachGoal', 'lead');
+                            }
                             form.reset();
                             $(form)
                                 .parsley()
@@ -91,6 +95,10 @@ export default function forms() {
                     .then(res => {
                         setTimeout(() => {
                             if (res.data.success) {
+
+                                if (typeof window.ym !== 'undefined') {
+                                    window.ym(89214903, 'reachGoal', 'lead');
+                                }
                                 message.classList.remove('has-error');
                                 message.textContent = res.data.message;
                                 setTimeout(() => {

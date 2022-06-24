@@ -81,7 +81,7 @@ export default function servicesFilter() {
                     results.innerHTML = '';
 
                     if (typeof window.ym !== 'undefined') {
-                        window.ym(89214903, 'reachGoal', 'lead');
+                        window.ym(89214903,'reachGoal','filter')
                     }
 
                     if (resultsNotFound) {
