@@ -1,0 +1,209 @@
+import axios from 'axios';
+
+export default function favourites() {
+    document.addEventListener('click', event => {
+        if (event.target.matches('.service-card__like-btn') || event.target.closest('.service-card__like-btn')) {
+            event.preventDefault();
+            const btn = event.target.matches('.service-card__like-btn') ? event.target : event.target.closest('.service-card__like-btn');
+            if (!btn.hasAttribute('data-id')) {
+                console.error('Fav btn has no ID attribute');
+                return;
+            }
+            const id = btn.getAttribute('data-id');
+
+            if (!btn.classList.contains('active')) {
+                if (localStorage.getItem('favourites') !== null) {
+                    const currentFavourites = JSON.parse(localStorage.getItem('favourites'));
+                    currentFavourites.push(id);
+
+                    const uniqueFavourites = [...new Set(currentFavourites)];
+
+                    localStorage.setItem('favourites', JSON.stringify(uniqueFavourites));
+                } else {
+                    localStorage.setItem('favourites', JSON.stringify([id]));
+                }
+
+                btn.classList.add('active');
+            } else {
+                const currentFavourites = JSON.parse(localStorage.getItem('favourites'));
+
+                const filteredFavourites = currentFavourites.filter(otherId => otherId !== id);
+
+                localStorage.setItem('favourites', JSON.stringify(filteredFavourites));
+                btn.classList.remove('active');
+            }
+        }
+    });
+
+    function checkFavourites() {
+        if (localStorage.getItem('favourites') === null) return;
+        const currentFavourites = JSON.parse(localStorage.getItem('favourites'));
+
+        console.log('Current fav', currentFavourites);
+
+        const btns = Array.from(document.querySelectorAll('.service-card__like-btn'));
+
+        btns.forEach(btn => {
+            if (!btn.hasAttribute('data-id')) return;
+            const btnId = btn.getAttribute('data-id');
+
+            if (currentFavourites.includes(btnId)) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+
+    checkFavourites();
+
+    window.checkFavourites = checkFavourites;
+
+    const favContainers = Array.from(document.querySelectorAll('.js-favourites'));
+
+    favContainers.forEach(container => {
+        const action = container.getAttribute('data-action');
+        const results = container.querySelector('.favourites__results');
+        const resultsNotFound = container.querySelector('.services-results__not-found');
+        const loader = container.querySelector('.loader');
+        let currentFavourites = [];
+        if (localStorage.getItem('favourites') !== null) {
+            currentFavourites = JSON.parse(localStorage.getItem('favourites'));
+        }
+
+        if (action) {
+            axios({
+                method: 'post',
+                url: action,
+                data: {
+                    favourites: currentFavourites
+                }
+            })
+                .then(res => {
+                    console.log('Response', res.data);
+                    loader.classList.add('hidden');
+                    results.innerHTML = '';
+
+                   
+
+                    if (resultsNotFound) {
+                        if (!res.data?.items?.length && !res.data?.sections?.items?.length) {
+                            results.style.display = 'none';
+                            resultsNotFound.style.display = 'block';
+                        } else {
+                            results.style.display = '';
+                            resultsNotFound.style.display = '';
+                        }
+                    }
+
+                    if (res.data.items) {
+                        const list = document.createElement('ol');
+                        list.className = 'services-results-list';
+
+                        results.appendChild(list);
+
+                        res.data.items.forEach(item => {
+                            const li = document.createElement('li');
+                            li.className = 'services-results-list-item';
+                            const card = document.createElement('div');
+                            card.className = 'service-card service-card--link';
+
+                            card.innerHTML = `
+                            <div class="service-card__content">
+                                <h4 class="service-card__title">
+                                    ${item.name}
+                                </h4>
+                            </div>
+
+                            <div class="service-card__price">
+                                ${Number(item.price).toLocaleString()} ₽
+                            </div>
+                            <a href="${item.url}" class="service__card-link-wrapper">
+
+                            </a>
+                            <a href="#" class="service-card__like-btn" data-id="${item.id}">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                    <use xlink:href="#heart"></use>
+                                </svg>
+                            </a>
+                        `;
+
+                            li.appendChild(card);
+
+                            list.appendChild(li);
+                        });
+                    } else if (res.data.sections) {
+                        const accordionsWrapper = document.createElement('div');
+                        accordionsWrapper.className =
+                            'accordions accordions--no-gap services-device__accordions services-device__accordions--with-top-margin';
+
+                        results.appendChild(accordionsWrapper);
+
+                        res.data.sections.forEach(section => {
+                            const accordion = document.createElement('div');
+                            accordion.className = 'accordions__accordion accordions__accordion--transparent js-accordion';
+
+                            accordion.innerHTML = `<div class="accordions__accordion-btn js-accordion-btn">
+                        <span class="accordions__accordion-btn-text">
+                            ${section.name}
+                        </span>
+
+                            <svg width="14" height="14" aria-hidden="true" class="icon-caret">
+                                <use xlink:href="#caret"></use>
+                            </svg>
+                        </div>
+                        <div class="accordions__accordion-content js-accordion-content">
+                            <div
+                                class="accordions__accordion-content-inner accordions__accordion-content-inner--small-padding">
+                                <div class="services-results favourites__results">
+                                    <ol class="services-results-list">
+                                        ${section.items
+                                            .map(
+                                                item => `
+                                            <li class="services-results-list-item">
+                                                <div class="service-card service-card--link">
+                                                    <div class="service-card__content">
+                                                        <h4 class="service-card__title">
+                                                           ${item.name}
+                                                        </h4>
+                                                    </div>
+    
+                                                    <div class="service-card__price">
+                                                        ${Number(item.price).toLocaleString()} ₽
+                                                    </div>
+                                                    <a href="${item.url}" class="service__card-link-wrapper">
+
+                                                    </a>
+                                                    <a href="#" class="service-card__like-btn" data-id="${item.id}">
+                                                        <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                                            <use xlink:href="#heart"></use>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            `
+                                            )
+                                            .join(' ')}
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>`;
+
+                            accordionsWrapper.appendChild(accordion);
+                        });
+                    }
+
+                    if (window.checkFavourites) {
+                        window.checkFavourites();
+                    }
+                })
+                .catch(err => {
+                    loader.classList.add('hidden');
+                    console.error(err);
+                });
+        } else {
+            console.error('Не указан атрибут action');
+            return;
+        }
+    });
+}

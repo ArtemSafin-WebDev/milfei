@@ -21,6 +21,7 @@ import chat from './chat';
 import selectService from './selectService';
 import storiesSlider from './storiesSlider';
 import fixedHeader from './fixedHeader';
+import favourites from './favourites';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     modals();
     tabs();
     menu();
+    favourites();
     servicesSlider();
     servicesFilter();
     forms();
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     chat();
     selectService();
     storiesSlider();
+   
    
 });
 

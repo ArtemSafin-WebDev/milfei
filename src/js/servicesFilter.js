@@ -119,7 +119,7 @@ export default function servicesFilter() {
                                 <a href="${item.url}" class="service__card-link-wrapper">
     
                                 </a>
-                                <a href="#" class="service-card__like-btn" style="visibility: hidden;">
+                                <a href="#" class="service-card__like-btn" data-id="${item.id}">
                                     <svg width="14" height="14" aria-hidden="true" class="icon-heart">
                                         <use xlink:href="#heart"></use>
                                     </svg>
@@ -172,7 +172,7 @@ export default function servicesFilter() {
                                                         <a href="${item.url}" class="service__card-link-wrapper">
     
                                                         </a>
-                                                        <a href="#" class="service-card__like-btn" style="visibility: hidden;">
+                                                        <a href="#" class="service-card__like-btn" data-id="${item.id}">
                                                             <svg width="14" height="14" aria-hidden="true" class="icon-heart">
                                                                 <use xlink:href="#heart"></use>
                                                             </svg>
@@ -189,6 +189,10 @@ export default function servicesFilter() {
 
                             accordionsWrapper.appendChild(accordion);
                         });
+                    }
+
+                    if (window.checkFavourites) {
+                        window.checkFavourites();
                     }
                 })
                 .catch(err => {

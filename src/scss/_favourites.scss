@@ -1,0 +1,9 @@
+.favourites__content {
+    padding: 1rem;
+    background: #F9F9F9;
+    padding-bottom: 4rem;
+    @include breakpoint(mobile) {
+        padding: 0 1rem;
+        
+    }
+}
