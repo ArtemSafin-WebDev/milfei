@@ -22,6 +22,7 @@ import selectService from './selectService';
 import storiesSlider from './storiesSlider';
 import fixedHeader from './fixedHeader';
 import favourites from './favourites';
+import wrapTables from './wrapTables';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     chat();
     selectService();
     storiesSlider();
+    wrapTables();
    
    
 });

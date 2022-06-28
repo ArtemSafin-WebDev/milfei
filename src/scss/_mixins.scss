@@ -71,15 +71,16 @@
 }
 
 @mixin customScrollbar {
-    scrollbar-color: var(--primary-color) white;
+    scrollbar-color: #362e29 white;
     scrollbar-width: thin;
     &::-webkit-scrollbar {
         background-color: white;
-        width: 0.6rem;
+        width: 0.4rem;
+        height: 0.4rem;
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: var(--primary-color);
+        background-color: #362e29;
     }
 
     &::-webkit-scrollbar-button {

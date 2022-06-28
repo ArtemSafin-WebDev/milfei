@@ -446,8 +446,8 @@
         font-size: 2.4rem;
         line-height: 120%;
         padding: 3rem 1rem;
-        border-top: 1px solid #E0E0E0;
-        border-bottom: 1px solid #E0E0E0;
+        border-top: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
 
         @include breakpoint(mobile) {
             font-size: 1.6rem;
@@ -481,6 +481,75 @@
         &:last-child {
             margin-bottom: 0;
         }
+    }
+
+    table {
+        margin: 8rem 0;
+
+        @include breakpoint(mobile) {
+            margin: 5rem 0;
+        }
+        th,
+        td {
+            vertical-align: top;
+        }
+        th {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+            padding: 1rem;
+            text-align: center;
+            background: #f9f9f9;
+            white-space: nowrap;
+
+            @include breakpoint(mobile) {
+                padding: 0.7rem;
+                font-size: 1.4rem;
+                line-height: 1.2;
+            }
+            &:nth-child(even) {
+                background: #e0e0e0;
+            }
+        }
+
+        td {
+            padding: 1rem;
+            font-weight: 400;
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+            text-align: left;
+
+            @include breakpoint(mobile) {
+                padding: 0.7rem;
+                font-size: 1.4rem;
+                line-height: 1.2;
+               
+            }
+        }
+
+        tbody tr:first-child td {
+            padding-top: 3rem;
+
+            @include breakpoint(mobile) {
+                padding-top: 1.5rem;
+            }
+        }
+    }
+}
+
+.article__table-wrapper {
+    overflow-x: auto;
+    margin: 8rem 0;
+    padding: 1rem;
+    table {
+        margin: 0;
+    }
+
+    @include customScrollbar;
+
+    @include breakpoint(mobile) {
+        margin: 5rem 0;
     }
 }
 
