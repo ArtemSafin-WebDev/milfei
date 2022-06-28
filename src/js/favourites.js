@@ -81,8 +81,9 @@ export default function favourites() {
         }
 
         formData.append('favourites', currentFavourites.join(','));
-
+       
         if (action) {
+            loader.classList.remove('hidden');
             axios({
                 method: 'post',
                 url: action,
