@@ -262,7 +262,7 @@
     font-weight: 400;
     font-size: 2.4rem;
     line-height: 3.6rem;
-    text-align: center;
+    text-align: left;
     max-width: 94rem;
     margin-top: 5rem;
 
@@ -291,7 +291,7 @@
         display: flex;
         align-items: center;
         gap: 2rem;
-        justify-content: center;
+        justify-content: space-between;
         @include breakpoint(mobile) {
             gap: 1rem;
         }
@@ -409,6 +409,8 @@
         width: auto;
         height: auto;
         margin: 8rem auto;
+        width: max-content;
+        max-width: 100%;
 
         figcaption {
             margin-top: 1rem;
@@ -429,6 +431,50 @@
         @include breakpoint(mobile) {
             margin: 5rem 0;
         }
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    em {
+        display: block;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 2.4rem;
+        line-height: 120%;
+        padding: 3rem 1rem;
+        border-top: 1px solid #E0E0E0;
+        border-bottom: 1px solid #E0E0E0;
+
+        @include breakpoint(mobile) {
+            font-size: 1.6rem;
+            padding: 1.8rem 0;
+        }
+    }
+
+    blockquote {
+        margin: 8rem 0;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        padding: 1.5rem 2rem;
+        padding-right: 0;
+        border: none;
+        border-left: 2px solid #ef5da8;
+        text-align: left;
+        @include breakpoint(mobile) {
+            margin: 5rem 0;
+            padding: 1rem 2rem;
+            padding-right: 0;
+            font-size: 1.4rem;
+            line-height: 1.2;
+            border-left: 1px solid #ef5da8;
+        }
+
         &:first-child {
             margin-top: 0;
         }
@@ -579,30 +625,6 @@
 }
 
 .article__remark {
-    margin: 8rem 0;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.6rem;
-    line-height: 2.2rem;
-    padding: 1.5rem 2rem;
-    padding-right: 0;
-    border-left: 2px solid #ef5da8;
-    text-align: left;
-    @include breakpoint(mobile) {
-        margin: 5rem 0;
-        padding: 1rem 2rem;
-        padding-right: 0;
-        font-size: 1.4rem;
-        line-height: 1.2;
-        border-left: 1px solid #ef5da8;
-    }
-
-    &:first-child {
-        margin-top: 0;
-    }
-    &:last-child {
-        margin-bottom: 0;
-    }
 }
 
 .article__list {
