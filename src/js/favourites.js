@@ -76,16 +76,15 @@ export default function favourites() {
                 method: 'post',
                 url: action,
                 data: {
-                    favourites: currentFavourites
+                    favourites: currentFavourites,
+                    action: 'favorites'
                 }
             })
                 .then(res => {
                     console.log('Response', res.data);
                     loader.classList.add('hidden');
                     results.innerHTML = '';
-
-                   
-
+                
                     if (resultsNotFound) {
                         if (!res.data?.items?.length && !res.data?.sections?.items?.length) {
                             results.style.display = 'none';
