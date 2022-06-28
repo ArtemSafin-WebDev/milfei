@@ -66,19 +66,27 @@ export default function favourites() {
         const results = container.querySelector('.favourites__results');
         const resultsNotFound = container.querySelector('.services-results__not-found');
         const loader = container.querySelector('.loader');
+        const form = container.querySelector('form');
         let currentFavourites = [];
         if (localStorage.getItem('favourites') !== null) {
             currentFavourites = JSON.parse(localStorage.getItem('favourites'));
         }
 
+        let formData = null;
+
+        if (form) {
+            formData = new FormData(form);
+        } else {
+            formData = new FormData();
+        }
+
+        formData.append('favourites', currentFavourites.join(','));
+
         if (action) {
             axios({
                 method: 'post',
                 url: action,
-                data: {
-                    favourites: currentFavourites,
-                    action: 'favorites'
-                }
+                data: formData
             })
                 .then(res => {
                     console.log('Response', res.data);
