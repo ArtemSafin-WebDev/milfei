@@ -257,7 +257,7 @@
 .article__content {
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 18rem;
+    margin-bottom: 8rem;
     font-style: normal;
     font-weight: 400;
     font-size: 2.4rem;
@@ -318,7 +318,7 @@
                 font-size: 1.2rem;
                 line-height: 1.2;
                 padding: 0.5rem 1rem;
-                align-self: center;
+                align-self: flex-start;
                 margin: 0;
             }
             &:link,
@@ -486,6 +486,13 @@
 
     table {
         margin: 8rem 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
 
         @include breakpoint(mobile) {
             margin: 5rem 0;
@@ -678,7 +685,7 @@
         h6 {
             font-style: normal;
             font-weight: 600;
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             line-height: 3.6rem;
             &:first-child {
                 margin-top: 0;

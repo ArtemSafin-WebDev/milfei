@@ -45,13 +45,13 @@
 
     @include breakpoint(mobile) {
         padding: 2rem;
-        padding-top: 9rem;
+        padding-top: 6rem;
     }
 }
 
 .modal__policy-modal-close {
-    width: 8rem;
-    height: 8rem;
+    width: 5rem;
+    height: 5rem;
     background-color: var(--text-color);
     position: absolute;
     right: 0;

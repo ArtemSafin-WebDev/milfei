@@ -29,7 +29,6 @@
         line-height: 1.8rem;
         min-height: 10rem;
         align-content: flex-start;
-        
     }
     &:link,
     &:visited {
@@ -39,7 +38,6 @@
         content: counter(ordered-list, decimal-leading-zero);
         width: 7.4rem;
         flex-shrink: 0;
-
 
         @include breakpoint(mobile) {
             grid-area: number;
@@ -63,12 +61,12 @@
     }
 
     &--link {
-        &:hover {
+        .no-touch &:hover {
             &::after {
                 opacity: 1;
             }
 
-            .service-card__like-btn {
+            .service-card__like-btn:not(.active) {
                 svg {
                     fill: #e0e0e0;
                 }
@@ -79,7 +77,34 @@
             }
         }
 
-        &:active,
+        // .touch &:active {
+        //     background-color: var(--text-color);
+        //     color: white;
+
+        //     &::after {
+        //         opacity: 0;
+        //     }
+        //     .service-card__like-btn:not(.active) {
+        //         svg {
+        //             fill: #e0e0e0;
+        //         }
+
+        //         &:hover {
+        //             color: #e0e0e0;
+        //         }
+        //     }
+
+        //     .service-card__like-btn.active {
+        //         color: white;
+        //         svg {
+        //             fill: white;
+        //         }
+
+        //         &:hover {
+        //             color: white;
+        //         }
+        //     }
+        // }
         &.active {
             background-color: var(--text-color);
             color: white;
@@ -87,13 +112,24 @@
             &::after {
                 opacity: 0;
             }
-            .service-card__like-btn {
+            .service-card__like-btn:not(.active) {
                 svg {
                     fill: #e0e0e0;
                 }
 
                 &:hover {
                     color: #e0e0e0;
+                }
+            }
+
+            .service-card__like-btn.active {
+                color: white;
+                svg {
+                    fill: white;
+                }
+
+                &:hover {
+                    color: white;
                 }
             }
         }
@@ -186,16 +222,17 @@
     }
 
     .no-touch &:hover {
-        color: var(--text-color) !important;
+        color: #e0e0e0;
         svg {
-            fill: var(--text-color) !important;
+            fill: #e0e0e0;
         }
     }
-    
-    &.active {
-        color: var(--text-color) !important;
+
+    .no-touch &.active,
+    .touch &.active {
+        color: var(--text-color);
         svg {
-            fill: var(--text-color) !important;
+            fill: var(--text-color);
         }
     }
 }
