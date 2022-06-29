@@ -185,7 +185,13 @@
         }
     }
 
-    &:hover,
+    .no-touch &:hover {
+        color: var(--text-color) !important;
+        svg {
+            fill: var(--text-color) !important;
+        }
+    }
+    
     &.active {
         color: var(--text-color) !important;
         svg {
