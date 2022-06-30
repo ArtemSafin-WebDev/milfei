@@ -6,10 +6,18 @@ import gsap from 'gsap';
 
 export default function storiesSlider() {
     const elements = Array.from(document.querySelectorAll('.js-stories-slider'));
+    const storiesBtns = Array.from(document.querySelectorAll('.stories-btn'));
+   
+
+    storiesBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            ym(89214903,'reachGoal','stories')
+        })
+    })
 
     elements.forEach(element => {
         const container = element.querySelector('.swiper');
-        const storiesBtns = Array.from(document.querySelectorAll('.stories-btn'));
+     
         const bullets = Array.from(element.querySelectorAll('.stories__slider-pagination-bullet'));
         const AUTOPLAY_DURATION = 15;
         let activeIndex = 0;
