@@ -38,9 +38,9 @@ export default function forms() {
                             success.classList.add('active');
 
                             console.log('Response', res.data);
-                            setTimeout(() => {
-                                success.classList.remove('active');
-                            }, 4000);
+                            // setTimeout(() => {
+                            //     success.classList.remove('active');
+                            // }, 4000);
                         } else {
                             errorMessage.textContent = res.data.error;
                             error.classList.add('active');
@@ -60,6 +60,15 @@ export default function forms() {
                     });
             }
         });
+
+        document.addEventListener('closemodal', event => {
+            console.log("Closemodal event", event)
+            if (event.detail.modal && event.detail.modal.matches('#callback-modal')) {
+
+                success.classList.remove('active');
+                error.classList.remove('active');
+            }
+        })
 
         if (returnBtn) {
             returnBtn.addEventListener('click', event => {

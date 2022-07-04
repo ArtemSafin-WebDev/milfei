@@ -22,13 +22,17 @@ export default function modals() {
 
         const openHandler = () => {
             lockScroll(modal, {
-                reserveScrollBarGap: true,
+                reserveScrollBarGap: true
             });
             modal.classList.add('active');
             document.body.classList.add('modal-open');
             window.activeModal = modal;
 
-            const openModalEvent = new CustomEvent('openmodal');
+            const openModalEvent = new CustomEvent('openmodal', {
+                detail: {
+                    modal: modal
+                }
+            });
             document.dispatchEvent(openModalEvent);
         };
         if (window.activeModal) {
@@ -50,7 +54,11 @@ export default function modals() {
 
         window.activeModal = null;
 
-        const closeModalEvent = new CustomEvent('closemodal');
+        const closeModalEvent = new CustomEvent('closemodal', {
+            detail: {
+                modal: modal
+            }
+        });
         document.dispatchEvent(closeModalEvent);
     }
 
@@ -58,7 +66,7 @@ export default function modals() {
 
     window.closeModal = closeModal;
 
-    document.addEventListener('click', (event) => {
+    document.addEventListener('click', event => {
         if (event.target.matches('a') || event.target.closest('a')) {
             const link = event.target.matches('a') ? event.target : event.target.closest('a');
             const hash = link.hash;
@@ -75,7 +83,7 @@ export default function modals() {
         }
     });
 
-    document.addEventListener('keydown', function (event) {
+    document.addEventListener('keydown', function(event) {
         if (event.which === 27 && window.activeModal) {
             closeModal(window.activeModal);
         }
