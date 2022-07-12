@@ -129,8 +129,8 @@ export default function storiesSlider() {
         console.log('Stories btns', storiesBtns);
 
         storiesBtns.forEach(btn => {
-            if (!btn.hasAttribute('data-slider-index')) return;
-            const index = Number(btn.getAttribute('data-slider-index'));
+            // if (!btn.hasAttribute('data-slider-index')) return;
+            const index = btn.hasAttribute('data-slider-index') ? Number(btn.getAttribute('data-slider-index')) : 0;
             btn.addEventListener('click', event => {
                 event.preventDefault();
 

@@ -9,7 +9,7 @@ export default function forms() {
         const error = form.querySelector('.modal__callback-modal-form-error');
         const successMessage = form.querySelector('.modal__callback-modal-form-success-heading');
         const errorMessage = form.querySelector('.modal__callback-modal-form-error-heading');
-        const returnBtn = form.querySelector('.modal__callback-return-back')
+        const returnBtn = form.querySelector('.modal__callback-return-back');
         form.addEventListener('submit', event => {
             event.preventDefault();
             if (
@@ -26,7 +26,6 @@ export default function forms() {
                 })
                     .then(res => {
                         if (res.data.success) {
-
                             if (typeof window.ym !== 'undefined') {
                                 window.ym(89214903, 'reachGoal', 'lead');
                             }
@@ -62,19 +61,18 @@ export default function forms() {
         });
 
         document.addEventListener('closemodal', event => {
-            console.log("Closemodal event", event)
+            console.log('Closemodal event', event);
             if (event.detail.modal && event.detail.modal.matches('#callback-modal')) {
-
                 success.classList.remove('active');
                 error.classList.remove('active');
             }
-        })
+        });
 
         if (returnBtn) {
             returnBtn.addEventListener('click', event => {
                 event.preventDefault();
                 error.classList.remove('active');
-            })
+            });
         }
     });
 
@@ -84,6 +82,10 @@ export default function forms() {
         const message = form.nextElementSibling;
         const actionURL = form.getAttribute('action');
         message.style.display = 'none';
+
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+        });
 
         input.addEventListener('input', event => {
             console.log(input.value);
@@ -104,7 +106,6 @@ export default function forms() {
                     .then(res => {
                         setTimeout(() => {
                             if (res.data.success) {
-
                                 if (typeof window.ym !== 'undefined') {
                                     window.ym(89214903, 'reachGoal', 'lead');
                                 }
@@ -141,7 +142,7 @@ export default function forms() {
             } else {
                 if (!input.value.includes('_')) {
                     message.style.display = '';
-                    message.textContent = 'Неверный номер телефона'
+                    message.textContent = 'Неверный номер телефона';
                     message.classList.add('has-error');
                     setTimeout(() => {
                         message.style.display = 'none';
@@ -150,6 +151,56 @@ export default function forms() {
                         message.classList.remove('has-error');
                     }, 10000);
                 }
+            }
+        });
+    });
+
+    const certificateForms = Array.from(document.querySelectorAll('.js-certifiacte-form'));
+
+    certificateForms.forEach(form => {
+        const actionURL = form.getAttribute('action');
+        const success = form.querySelector('.certificates__success');
+        const error = form.querySelector('.certificates__error');
+        const sendBlock = form.querySelector('.certificates__send')
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+            if (
+                $(form)
+                    .parsley()
+                    .isValid()
+            ) {
+                const formData = new FormData(form);
+
+                axios({
+                    method: 'post',
+                    url: actionURL,
+                    data: formData
+                })
+                    .then(res => {
+                        if (res.data.success) {
+                           
+                            form.reset();
+                            $(form)
+                                .parsley()
+                                .reset();
+                            sendBlock.style.display = 'none';
+                            success.style.display = 'block';
+                            error.style.display = '';
+                            console.log('Response', res.data);
+                            
+                        } else {
+                            sendBlock.style.display = 'none';
+                            success.style.display = '';
+                            error.style.display = 'block'
+                            console.log('Error', res.data.error);
+                        }
+                    })
+                    .catch(err => {
+                        sendBlock.style.display = 'none';
+                        success.style.display = '';
+                        error.style.display = 'block'
+                        console.log('Error', err);
+                    });
             }
         });
     });
