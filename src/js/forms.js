@@ -161,7 +161,8 @@ export default function forms() {
         const actionURL = form.getAttribute('action');
         const success = form.querySelector('.certificates__success');
         const error = form.querySelector('.certificates__error');
-        const sendBlock = form.querySelector('.certificates__send')
+        const sendBlock = form.querySelector('.certificates__send');
+        const tryAgainLinks = Array.from(form.querySelectorAll('.certificates__try-again'));
         form.addEventListener('submit', event => {
             event.preventDefault();
             if (
@@ -203,5 +204,12 @@ export default function forms() {
                     });
             }
         });
+
+        tryAgainLinks.forEach(link => link.addEventListener('click', event => {
+            event.preventDefault();
+            sendBlock.style.display = '';
+            success.style.display = '';
+            error.style.display = '';
+        }))
     });
 }
