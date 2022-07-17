@@ -42,7 +42,7 @@
     flex-shrink: 0;
     user-select: none;
     cursor: pointer;
-
+    max-width: 100%;
 
     @include breakpoint(mobile) {
         .services-filter__tags:not(.show-all) &:not(:nth-of-type(-n+9)) {
@@ -75,6 +75,8 @@
     padding: 1rem 2rem;
     border-radius: 5rem;
     padding-top: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     @include breakpoint(mobile) {
         font-style: normal;

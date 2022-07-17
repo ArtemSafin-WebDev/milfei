@@ -105,6 +105,10 @@
     min-height: min(100vh, 72rem);
     overflow: hidden;
 
+    &--compact {
+        min-height: min(100vh, 39rem);
+    }
+
     @include breakpoint(mobile) {
         padding: 0 1rem;
         min-height: min(calc(100vh - 14rem), 72rem);
@@ -214,7 +218,6 @@
     font-weight: 500;
     font-size: 12.8rem;
     line-height: 90%;
-   
 
     text-shadow: 0px 0px 6rem rgba(185, 185, 185, 0.4);
     margin-bottom: 2rem;
@@ -236,7 +239,6 @@
         margin-bottom: 3rem;
     }
 }
-
 
 .service-intro__stories {
     display: flex;

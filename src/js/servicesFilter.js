@@ -81,7 +81,7 @@ export default function servicesFilter() {
                     results.innerHTML = '';
 
                     if (typeof window.ym !== 'undefined') {
-                        window.ym(89214903,'reachGoal','filter')
+                        window.ym(89214903, 'reachGoal', 'filter');
                     }
 
                     if (resultsNotFound) {
@@ -205,7 +205,6 @@ export default function servicesFilter() {
             sendData();
         }
 
-    
         if (searchBtn) {
             searchBtn.addEventListener('click', event => {
                 event.preventDefault();
@@ -276,5 +275,9 @@ export default function servicesFilter() {
         form.addEventListener('submit', event => {
             event.preventDefault();
         });
+
+        if (window.matchMedia('(max-width: 640px)').matches) {
+            showTagsCloud.classList.add('active');
+        }
     });
 }
