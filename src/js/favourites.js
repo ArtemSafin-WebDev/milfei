@@ -32,6 +32,10 @@ export default function favourites() {
                 localStorage.setItem('favourites', JSON.stringify(filteredFavourites));
                 btn.classList.remove('active');
             }
+
+
+            checkFavourites();
+            checkFavouritesInHeader();
         }
     });
 
@@ -55,7 +59,28 @@ export default function favourites() {
         });
     }
 
+
+    function checkFavouritesInHeader() {
+        const link = document.querySelector('.page-header__favourites');
+        if (!link) return;
+        if (localStorage.getItem('favourites') === null) {
+            link.classList.remove('active');
+        } else {
+            const currentFavourites = JSON.parse(localStorage.getItem('favourites'));
+
+            console.log(currentFavourites, 'FOR HEADER')
+            if (currentFavourites.length === 0) {
+                
+                link.classList.remove('active');
+            } else {
+                link.classList.add('active');
+            }
+        }
+    }
+
     checkFavourites();
+
+    checkFavouritesInHeader();
 
     window.checkFavourites = checkFavourites;
 
@@ -204,6 +229,8 @@ export default function favourites() {
                     if (window.checkFavourites) {
                         window.checkFavourites();
                     }
+
+                    checkFavouritesInHeader();
                 })
                 .catch(err => {
                     loader.classList.add('hidden');
