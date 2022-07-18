@@ -23,21 +23,47 @@ export default function favourites() {
                     localStorage.setItem('favourites', JSON.stringify([id]));
                 }
 
-                btn.classList.add('active');
+                btn.classList.add('popover-shown');
+
+                btn.popoverTimer = setTimeout(() => {
+                    btn.classList.remove('popover-shown');
+                }, 3000);
             } else {
                 const currentFavourites = JSON.parse(localStorage.getItem('favourites'));
 
                 const filteredFavourites = currentFavourites.filter(otherId => otherId !== id);
 
                 localStorage.setItem('favourites', JSON.stringify(filteredFavourites));
-                btn.classList.remove('active');
-            }
+                // btn.classList.remove('active');
 
+                btn.classList.remove('popover-shown');
+
+                if (btn.popoverTimer) {
+                    clearTimeout(btn.popoverTimer);
+                    btn.popoverTimer = null;
+                }
+            }
 
             checkFavourites();
             checkFavouritesInHeader();
         }
     });
+
+
+    window.addEventListener('scroll', () => {
+        const btns = Array.from(document.querySelectorAll('.service-card__like-btn'));
+
+        btns.forEach(btn => {
+            btn.classList.remove('popover-shown');
+
+            if (btn.popoverTimer) {
+                clearTimeout(btn.popoverTimer);
+                btn.popoverTimer = null;
+            }
+        })
+    }, {
+        passive: true
+    })
 
     function checkFavourites() {
         if (localStorage.getItem('favourites') === null) return;
@@ -53,12 +79,13 @@ export default function favourites() {
 
             if (currentFavourites.includes(btnId)) {
                 btn.classList.add('active');
+                btn.title = 'Удалить из избранного';
             } else {
                 btn.classList.remove('active');
+                btn.title = 'Добавить в избранное';
             }
         });
     }
-
 
     function checkFavouritesInHeader() {
         const link = document.querySelector('.page-header__favourites');
@@ -68,9 +95,8 @@ export default function favourites() {
         } else {
             const currentFavourites = JSON.parse(localStorage.getItem('favourites'));
 
-            console.log(currentFavourites, 'FOR HEADER')
+            console.log(currentFavourites, 'FOR HEADER');
             if (currentFavourites.length === 0) {
-                
                 link.classList.remove('active');
             } else {
                 link.classList.add('active');
@@ -106,7 +132,7 @@ export default function favourites() {
         }
 
         formData.append('favourites', currentFavourites.join(','));
-       
+
         if (action) {
             loader.classList.remove('hidden');
             axios({
@@ -118,7 +144,7 @@ export default function favourites() {
                     console.log('Response', res.data);
                     loader.classList.add('hidden');
                     results.innerHTML = '';
-                
+
                     if (resultsNotFound) {
                         if (!res.data?.items?.length && !res.data?.sections?.items?.length) {
                             results.style.display = 'none';
@@ -154,11 +180,21 @@ export default function favourites() {
                             <a href="${item.url}" class="service__card-link-wrapper">
 
                             </a>
-                            <a href="#" class="service-card__like-btn" data-id="${item.id}">
-                                <svg width="14" height="14" aria-hidden="true" class="icon-heart">
-                                    <use xlink:href="#heart"></use>
-                                </svg>
-                            </a>
+                           
+
+                            <div class="service-card__like-btn-wrapper">
+                                <a href="#" class="service-card__like-btn" data-id="${item.id}">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+
+                                </a>
+                                <span class="service-card__like-btn-popover">
+                                    <span class="service-card__like-btn-popover-inner">
+                                        Добавлено в <a href="/favorites">избранное</a>
+                                    </span>
+                                </span>
+                            </div>
                         `;
 
                             li.appendChild(card);

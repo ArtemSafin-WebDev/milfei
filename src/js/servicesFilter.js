@@ -119,11 +119,19 @@ export default function servicesFilter() {
                                 <a href="${item.url}" class="service__card-link-wrapper">
     
                                 </a>
-                                <a href="#" class="service-card__like-btn" data-id="${item.id}">
-                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
-                                        <use xlink:href="#heart"></use>
-                                    </svg>
-                                </a>
+                                <div class="service-card__like-btn-wrapper">
+                                    <a href="#" class="service-card__like-btn" data-id="${item.id}">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                            <use xlink:href="#heart"></use>
+                                        </svg>
+
+                                    </a>
+                                    <span class="service-card__like-btn-popover">
+                                        <span class="service-card__like-btn-popover-inner">
+                                            Добавлено в <a href="/favorites">избранное</a>
+                                        </span>
+                                    </span>
+                                </div>
                             `;
 
                             li.appendChild(card);

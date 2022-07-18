@@ -185,6 +185,16 @@
     }
 }
 
+.service-card__like-btn-wrapper {
+    position: relative;
+
+    @include breakpoint(mobile) {
+        grid-area: like;
+        justify-self: flex-end;
+        align-self: flex-start;
+    }
+}
+
 .service-card__like-btn {
     width: 4rem;
     height: 4rem;
@@ -200,9 +210,6 @@
     @include breakpoint(mobile) {
         width: 3rem;
         height: 3rem;
-        grid-area: like;
-        justify-self: flex-end;
-        align-self: flex-start;
     }
     &:link,
     &:visited {
@@ -244,4 +251,78 @@
     width: 100%;
     height: 100%;
     z-index: 10;
+}
+
+.service-card__like-btn-popover {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 20rem;
+    padding-bottom: 1.5rem;
+    z-index: 20;
+    filter: drop-shadow(0 0 1rem rgba(black, 0.2));
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0s linear 0.4s;
+
+    @include breakpoint(mobile) {
+        left: auto;
+        top: 50%;
+        bottom: auto;
+        right: 100%;
+        padding: 0;
+        padding-right: 1.5rem;
+        transform: translateY(-50%);
+    }
+
+    .popover-shown ~ & {
+        opacity: 1;
+        visibility: inherit;
+        transition: opacity 0.4s, visibility 0.4s;
+    }
+}
+
+.service-card__like-btn-popover-inner {
+    background-color: #fff;
+    padding: 1rem;
+    font-size: 1.4rem;
+    position: relative;
+    color: #828282;
+
+    a {
+        color: var(--text-color);
+        text-decoration: underline;
+        transition: all 0.2s;
+        text-decoration-color: transparent;
+        &:hover {
+            text-decoration-color: var(--text-color);
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 100%;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 1rem 0.7rem 0 0.7rem;
+        border-color: white transparent transparent transparent;
+
+        @include breakpoint(mobile) {
+            top: 50%;
+            transform: translateY(-50%);
+            left: 100%;
+
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: .8rem 0 .8rem 1rem;
+            border-color: transparent transparent transparent white;
+        }
+    }
 }
