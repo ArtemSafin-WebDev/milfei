@@ -11,11 +11,29 @@
     color: var(--text-color);
     gap: 0.8rem;
 
+    &--main {
+        flex-direction: row;
+        gap: 1.5rem;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        font-family: 'Arial', sans-serif;
+    }
+
     @include breakpoint(mobile) {
         font-style: normal;
         font-weight: 400;
         font-size: 1rem;
         line-height: 1.2;
+
+        &--main {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.2rem;
+            line-height: 1.4rem;
+            gap: 1rem;
+        }
     }
     &:link,
     &:visited {
@@ -36,7 +54,7 @@
             inset: 0.3rem;
 
             @include breakpoint(mobile) {
-                inset: .2rem;
+                inset: 0.2rem;
             }
         }
     }
@@ -51,6 +69,11 @@
     z-index: 1;
     background: linear-gradient(to bottom, #f584cf, #9a5dd8);
     margin-top: 0.2rem;
+
+    .stories-btn--main & {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
 }
 
 .stories-btn__image-wrapper {
@@ -68,7 +91,6 @@
     height: 100%;
     object-fit: cover;
 }
-
 
 .stories-btn__text {
     @include breakpoint(mobile) {

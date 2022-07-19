@@ -23,6 +23,7 @@ import storiesSlider from './storiesSlider';
 import fixedHeader from './fixedHeader';
 import favourites from './favourites';
 import wrapTables from './wrapTables';
+import pageHeaderPhones from './pageHeaderPhones';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     selectService();
     storiesSlider();
     wrapTables();
+    pageHeaderPhones();
    
    
 });
