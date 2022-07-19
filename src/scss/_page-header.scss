@@ -169,6 +169,10 @@
     gap: 3rem;
     row-gap: 1.5rem;
     flex-wrap: wrap;
+
+    @include breakpointMF(small-tablet) {
+        display: none;
+    }
 }
 
 .page-header__social-link {
