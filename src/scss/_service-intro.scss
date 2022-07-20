@@ -113,6 +113,10 @@
         padding: 0 1rem;
         min-height: min(calc(100vh - 14rem), 72rem);
         padding-bottom: 2rem;
+
+        &--compact {
+            min-height: min(calc(100vh - 14rem), 39rem);
+        }
     }
 }
 
