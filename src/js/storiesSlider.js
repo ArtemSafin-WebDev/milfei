@@ -8,6 +8,8 @@ export default function storiesSlider() {
     const elements = Array.from(document.querySelectorAll('.js-stories-slider'));
     const storiesBtns = Array.from(document.querySelectorAll('.stories-btn'));
 
+    console.log('NEW STORIES SCRIPT')
+
     storiesBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             ym(89214903, 'reachGoal', 'stories');
