@@ -6,7 +6,7 @@ import gsap from 'gsap';
 
 export default function storiesSlider() {
     const elements = Array.from(document.querySelectorAll('.js-stories-slider'));
-    const storiesBtns = Array.from(document.querySelectorAll('.stories-btn'));
+    const storiesBtns = Array.from(document.querySelectorAll('.stories-btn, .js-stories-btn'));
 
     console.log('NEW STORIES SCRIPT')
 
