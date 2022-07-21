@@ -171,6 +171,8 @@ export default function storiesSlider() {
                 console.log('Stories index', index);
 
                 instance.slideTo(index, 0);
+
+                playback(instance);
             });
         });
     });
