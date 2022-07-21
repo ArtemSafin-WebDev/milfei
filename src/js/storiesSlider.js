@@ -64,12 +64,15 @@ export default function storiesSlider() {
             init: false,
             on: {
                 init: swiper => {
+                    console.log('Инициализация')
                     playback(swiper);
 
                     activeIndex = swiper.realIndex;
                 },
                 slideChange: swiper => {
+                   
                     if (activeIndex === swiper.realIndex) return;
+                    console.log("Смена слайда")
                     playback(swiper);
 
                     activeIndex = swiper.realIndex;
