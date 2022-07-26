@@ -173,27 +173,30 @@ export default function favourites() {
                                     ${item.name}
                                 </h4>
                             </div>
-
                             <div class="service-card__price">
                                 ${Number(item.price).toLocaleString()} ₽
                             </div>
-                            <a href="${item.url}" class="service__card-link-wrapper">
+                            <a href="${item.isModal ? '#callback-modal' : item.url}" class="service__card-link-wrapper">
 
                             </a>
-                           
+                            <div class="service-card__btns">
+                                <div class="service-card__like-btn-wrapper">
+                                    <a href="#" class="service-card__like-btn" data-id="${item.id}">
+                                        <svg width="14" height="14" aria-hidden="true"
+                                            class="icon-heart">
+                                            <use xlink:href="#heart"></use>
+                                        </svg>
 
-                            <div class="service-card__like-btn-wrapper">
-                                <a href="#" class="service-card__like-btn" data-id="${item.id}">
-                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
-                                        <use xlink:href="#heart"></use>
-                                    </svg>
-
-                                </a>
-                                <span class="service-card__like-btn-popover">
-                                    <span class="service-card__like-btn-popover-inner">
-                                        Добавлено в <a href="/favorites">избранное</a>
+                                    </a>
+                                    <span class="service-card__like-btn-popover">
+                                        <span class="service-card__like-btn-popover-inner">
+                                            Добавлено в <a href="/favorites">избранное</a>
+                                        </span>
                                     </span>
-                                </span>
+                                </div>
+                                <a href="${item.isModal ? '#callback-modal' : item.url}" class="service-card__btn">
+                                    ${item.btnText}
+                                </a>
                             </div>
                         `;
 
@@ -233,21 +236,34 @@ export default function favourites() {
                                                 <div class="service-card service-card--link">
                                                     <div class="service-card__content">
                                                         <h4 class="service-card__title">
-                                                           ${item.name}
+                                                            ${item.name}
                                                         </h4>
                                                     </div>
-    
                                                     <div class="service-card__price">
                                                         ${Number(item.price).toLocaleString()} ₽
                                                     </div>
-                                                    <a href="${item.url}" class="service__card-link-wrapper">
-
+                                                    <a href="${item.isModal ? '#callback-modal' : item.url}" class="service__card-link-wrapper">
+                        
                                                     </a>
-                                                    <a href="#" class="service-card__like-btn" data-id="${item.id}">
-                                                        <svg width="14" height="14" aria-hidden="true" class="icon-heart">
-                                                            <use xlink:href="#heart"></use>
-                                                        </svg>
-                                                    </a>
+                                                    <div class="service-card__btns">
+                                                        <div class="service-card__like-btn-wrapper">
+                                                            <a href="#" class="service-card__like-btn" data-id="${item.id}">
+                                                                <svg width="14" height="14" aria-hidden="true"
+                                                                    class="icon-heart">
+                                                                    <use xlink:href="#heart"></use>
+                                                                </svg>
+                        
+                                                            </a>
+                                                            <span class="service-card__like-btn-popover">
+                                                                <span class="service-card__like-btn-popover-inner">
+                                                                    Добавлено в <a href="/favorites">избранное</a>
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                        <a href="${item.isModal ? '#callback-modal' : item.url}" class="service-card__btn">
+                                                            ${item.btnText}
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </li>
                                             `
