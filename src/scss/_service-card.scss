@@ -160,15 +160,17 @@
             font-weight: 400;
             font-size: 1rem;
             line-height: 1.4rem;
-            margin-top: 0.2rem;
+            margin-top: 0.5rem;
         }
     }
 
     @include breakpoint(mobile) {
         font-style: normal;
-        font-weight: 400;
-        font-size: 1.4rem;
-        line-height: 1.8rem;
+      
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2rem;
+        line-height: 2.4rem;
         max-width: none;
         grid-area: title;
         align-self: flex-start;
