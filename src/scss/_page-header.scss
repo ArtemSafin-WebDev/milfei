@@ -527,7 +527,10 @@
 .page-header__logo {
     flex-shrink: 0;
     margin-right: var(--content-padding);
-
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     @include breakpoint(mobile) {
         margin-right: 1rem;
 
