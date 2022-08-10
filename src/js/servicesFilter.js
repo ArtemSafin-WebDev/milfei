@@ -1,4 +1,8 @@
 import axios from 'axios';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 export default function servicesFilter() {
     const elements = Array.from(document.querySelectorAll('.js-services-filter'));
@@ -65,6 +69,9 @@ export default function servicesFilter() {
                 sendData();
             });
         });
+
+
+       
 
         function sendData() {
             const formData = new FormData(form);
@@ -220,6 +227,19 @@ export default function servicesFilter() {
                     if (window.checkFavourites) {
                         window.checkFavourites();
                     }
+
+                    if (window.matchMedia("(max-width: 640px)").matches) {
+                        gsap.to(window, {
+                            duration: 1.2,
+                            ease: 'power2.out',
+                            scrollTo: {
+                                y: document.querySelector('.services-filter__results'),
+                                autoKill: true,
+                                offsetY: document.querySelector('.page-header').offsetHeight
+                            }
+                        });
+                    }
+                  
                 })
                 .catch(err => {
                     loader.classList.add('hidden');
