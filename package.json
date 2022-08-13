@@ -28,6 +28,7 @@
     "gsap": "^3.10.4",
     "imagesloaded": "^4.1.4",
     "inputmask": "^5.0.6",
+    "js-cookie": "^3.0.1",
     "lazysizes": "^5.3.2",
     "lodash": "^4.17.21",
     "parsleyjs": "^2.9.2",

@@ -55,6 +55,8 @@
 * MIT Licensed
 */
 
+/*! js-cookie v3.0.1 | MIT */
+
 /*! lazysizes - v5.2.2 */
 
 /**
