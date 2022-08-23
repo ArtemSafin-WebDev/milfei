@@ -132,10 +132,6 @@
     color: var(--text-color);
     display: block;
     text-align: left;
-
-    @include breakpoint(mobile) {
-        display: none;
-    }
 }
 
 .service-intro__bottom-row {

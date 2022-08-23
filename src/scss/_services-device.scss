@@ -3,7 +3,7 @@
 
 .services-device__content {
     padding: 1rem;
-    padding-bottom: 0;
+    padding-bottom: 10rem;
 
     @include breakpoint(mobile) {
         padding: 0;
@@ -58,7 +58,6 @@
     padding-bottom: 6rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    text-align: center;
     font-style: normal;
     font-weight: 400;
     font-size: 2.4rem;
@@ -76,7 +75,6 @@
 .services-device__intro-text {
     width: 100%;
     margin: auto;
-    max-width: 95rem;
 }
 
 .services-device__content-inner {
@@ -87,11 +85,9 @@
 
 .services-device__accordions {
     padding: 0 2rem;
-    margin-bottom: 12rem;
 
     @include breakpoint(mobile) {
         padding: 0 1rem;
-        margin-bottom: 5rem;
     }
 
     &--with-top-margin {
@@ -100,34 +96,47 @@
 }
 
 .services-device__heading {
+    margin-top: 6rem;
     font-style: normal;
     font-weight: 500;
-    font-size: 6.4rem;
+    font-size: 4rem;
     line-height: 90%;
     margin-bottom: 8rem;
     text-align: center;
 
-    @include breakpointMF(small-tablet) {
-        text-transform: lowercase;
-    }
-
     @include breakpoint(mobile) {
         font-style: normal;
         font-weight: 500;
-        font-size: 3.2rem;
+        font-size: 2.8rem;
         line-height: 90%;
         margin-bottom: 3rem;
     }
 }
 
+.services-device__heading2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 4rem;
+  line-height: 5rem;
+  margin-bottom: 5rem;
+  text-align: center;
+
+  @include breakpoint(mobile) {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.8rem;
+    line-height: 3.5rem;
+    margin-bottom: 3rem;
+    text-align: left;
+  }
+}
+
 .services-device__results {
     padding-left: 2rem;
     padding-right: 2rem;
-    margin-bottom: 5rem;
 
     @include breakpoint(mobile) {
         padding: 0 1rem;
-        margin-bottom: 2.4rem;
     }
 }
 
