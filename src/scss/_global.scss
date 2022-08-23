@@ -205,3 +205,9 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     background-color: transparent;
 }
+
+
+[disabled] {
+    opacity: 0.5;
+    cursor: default;
+}

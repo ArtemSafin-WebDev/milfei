@@ -10,21 +10,30 @@ export default function forms() {
         const successMessage = form.querySelector('.modal__callback-modal-form-success-heading');
         const errorMessage = form.querySelector('.modal__callback-modal-form-error-heading');
         const returnBtn = form.querySelector('.modal__callback-return-back');
+        const submit = form.querySelector('button[type="submit"]');
         form.addEventListener('submit', event => {
             event.preventDefault();
+           
             if (
                 $(form)
                     .parsley()
                     .isValid()
             ) {
                 const formData = new FormData(form);
-
+                if (submit) {
+                    submit.disabled = true;
+                }
+               
                 axios({
                     method: 'post',
                     url: actionURL,
                     data: formData
                 })
                     .then(res => {
+                        if (submit) {
+                            submit.disabled = false;
+                        }
+                      
                         if (res.data.success) {
                             if (typeof window.ym !== 'undefined') {
                                 window.ym(89214903, 'reachGoal', 'lead');
@@ -50,6 +59,10 @@ export default function forms() {
                         }
                     })
                     .catch(err => {
+                        if (submit) {
+                            submit.disabled = false;
+                        }
+                      
                         errorMessage.textContent = err.message;
                         error.classList.add('active');
                         console.log('Error', err);
@@ -163,6 +176,7 @@ export default function forms() {
         const error = form.querySelector('.certificates__error');
         const sendBlock = form.querySelector('.certificates__send');
         const tryAgainLinks = Array.from(form.querySelectorAll('.certificates__try-again'));
+        const submit = form.querySelector('button[type="submit"]');
         form.addEventListener('submit', event => {
             event.preventDefault();
             if (
@@ -171,6 +185,10 @@ export default function forms() {
                     .isValid()
             ) {
                 const formData = new FormData(form);
+                if (submit) {
+                    submit.disabled = true;
+                }
+                
 
                 axios({
                     method: 'post',
@@ -178,6 +196,10 @@ export default function forms() {
                     data: formData
                 })
                     .then(res => {
+                        if (submit) {
+                            submit.disabled = false;
+                        }
+                        
                         if (res.data.success) {
                            
                             form.reset();
@@ -197,6 +219,10 @@ export default function forms() {
                         }
                     })
                     .catch(err => {
+                        if (submit) {
+                            submit.disabled = false;
+                        }
+                       
                         sendBlock.style.display = 'none';
                         success.style.display = '';
                         error.style.display = 'block'
