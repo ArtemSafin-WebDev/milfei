@@ -15,6 +15,11 @@
     visibility: hidden;
     transition: opacity 0.4s, visibility 0s linear 0.4s;
 
+    &--discount {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(48px);
+    }
+
     .no-touch & {
         @include customScrollbar();
         overflow-y: scroll;
@@ -35,6 +40,14 @@
     margin: auto;
     width: 100%;
     max-width: 62.5rem;
+    position: relative;
+
+    @include breakpoint(mobile) {
+        .modal--discount & {
+            margin: auto -1rem;
+            width: auto;
+        }
+    }
 }
 
 .modal__inner--policy {
@@ -48,7 +61,6 @@
         padding-top: 6rem;
     }
 }
-
 
 .modal__inner--promo {
     max-width: 62.5rem;
@@ -336,8 +348,8 @@
 
     a {
         color: var(--text-color);
-      
-        transition: all .2s;
+
+        transition: all 0.2s;
         text-decoration: underline;
         text-decoration-color: transparent;
         &:link,
@@ -448,4 +460,224 @@
     font-size: 1.4rem;
     line-height: 1.2;
     font-weight: 400;
+}
+
+.modal__discount {
+    position: relative;
+    z-index: 1;
+    background-color: #000;
+    color: white;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 40rem;
+
+    @include breakpoint(mobile) {
+        padding: 1.5rem;
+        min-height: 25rem;
+    }
+}
+
+.modal__discount-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.modal__discount-bg-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal__discount-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 6.4rem;
+    line-height: 90%;
+    text-transform: lowercase;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 3.2rem;
+        line-height: 90%;
+    }
+}
+
+.modal__discount-title-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    font-family: 'Arial', sans-serif;
+    margin-top: 0.35rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.1rem;
+    }
+}
+
+.modal__discount-code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 2rem;
+    color: #ceb048;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 100%;
+    align-self: flex-start;
+    width: 21rem;
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    border-radius: 5rem;
+    margin-top: 0.6rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 100%;
+        padding: 0.8rem 1.6rem;
+        width: auto;
+    }
+}
+
+.modal__discount-row {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    gap: 3rem;
+    justify-content: space-between;
+}
+
+.modal__discount-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.modal__discount-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.modal__discount-card-amount {
+    width: 14rem;
+    height: 7rem;
+    flex-shrink: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3.2rem;
+    line-height: 100%;
+    text-align: center;
+    text-transform: lowercase;
+    border: 1px solid rgba(249, 249, 249, 0.3);
+    border-radius: 5rem;
+    font-family: 'Inter', sans-serif;
+
+    @include breakpoint(mobile) {
+        width: 8.5rem;
+        height: 3.8rem;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.8rem;
+        line-height: 100%;
+    }
+}
+
+.modal__discount-card-text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 100%;
+    color: #ffffff;
+    text-transform: lowercase;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 100%;
+    }
+}
+
+.modal__discount-link {
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 9rem;
+    height: 9rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 50%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    font-family: 'Arial', sans-serif;
+    transition: all 0.2s;
+    color: black;
+
+    @include breakpoint(mobile) {
+        width: 6rem;
+        height: 6rem;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.6rem;
+    }
+    &:link,
+    &:visited {
+        color: black;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: #000;
+            color: white;
+        }
+    }
+}
+
+.modal__discount-close {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 5;
+    background: #362e29;
+    width: 7.4rem;
+    height: 8rem;
+
+    @include breakpoint(mobile) {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    svg {
+        fill: white;
+        width: 5rem;
+        height: 5rem;
+    }
 }
