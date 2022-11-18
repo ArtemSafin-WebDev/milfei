@@ -162,6 +162,12 @@
     line-height: 90%;
     margin-top: -1rem;
 
+    &--align {
+        &-left {
+            text-align: left;
+        }
+    }
+
     @include breakpoint(mobile) {
         position: absolute;
         left: 50%;
@@ -186,6 +192,28 @@
 }
 
 .service-intro__wrapper {
+    &--align {
+        &-left {
+            text-align: left;
+            h1 {
+                @media screen and (max-width: 639px) {
+                    position: relative;
+                    top: initial;
+                    left: initial;
+                    transform: initial;
+                    & + * {
+                        margin-top: 1.5rem;
+                    }
+                }
+                & + * {
+                    margin-top: 2.5rem;
+                }
+            }
+        }
+    }
+    &--dark {
+        color: #362E29;
+    }
 }
 
 .service-intro__heading-text {
