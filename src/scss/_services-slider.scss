@@ -48,7 +48,7 @@
 
     @include breakpoint(mobile) {
         min-height: 40rem;
-       
+
         padding: 2rem;
         padding-top: 12rem;
     }
@@ -114,7 +114,7 @@
     transition: opacity 0.2s;
     opacity: 0;
 
-  
+
 
     &::after {
         content: '';
@@ -127,7 +127,7 @@
         transition: opacity 0.2s;
         opacity: 0;
 
-        
+
     }
 }
 
@@ -156,7 +156,7 @@
 .services-slider__card-title {
     font-style: normal;
     font-weight: 400;
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     line-height: 2.6rem;
     margin-bottom: 3rem;
     @include breakpoint(mobile) {
@@ -172,7 +172,7 @@
     position: relative;
     z-index: 1;
 
- 
+
 
     &::before {
         content: '';
