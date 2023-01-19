@@ -12,6 +12,11 @@
     width: 100%;
     height: 100%;
     z-index: -1;
+
+    &--narrow {
+        position: relative;
+        z-index: 1;
+    }
 }
 
 .intro__bg-image {
@@ -21,6 +26,49 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    &--1920, &--1280, &--1024, &--768, &--414 {
+        position: relative;
+    }
+
+    &--1920 {
+        @media screen and (max-width: 1279px) {
+            display: none;
+        }
+    }
+
+    &--1280 {
+        @media screen and (min-width: 1280px) {
+            display: none;
+        }
+        @media screen and (max-width: 1023px) {
+            display: none;
+        }
+    }
+
+    &--1024 {
+        @media screen and (min-width: 1024px) {
+            display: none;
+        }
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
+    }
+
+    &--768 {
+        @media screen and (min-width: 768px) {
+            display: none;
+        }
+        @media screen and (max-width: 414px) {
+            display: none;
+        }
+    }
+
+    &--414 {
+        @media screen and (min-width: 413px) {
+            display: none;
+        }
+    }
 }
 
 .intro__decor-image {
@@ -28,10 +76,9 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 80.8rem;
     width: 63%;
     height: auto;
-   
+
     @include breakpoint(mobile) {
         width: 63rem;
         right: 3rem;

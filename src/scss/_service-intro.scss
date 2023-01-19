@@ -109,6 +109,11 @@
         min-height: min(100vh, 39rem);
     }
 
+    &--narrow {
+        min-height: initial;
+        padding: 0;
+    }
+
     @include breakpoint(mobile) {
         padding: 0 1rem;
         min-height: min(calc(100vh - 14rem), 72rem);
@@ -116,6 +121,10 @@
 
         &--compact {
             min-height: min(calc(100vh - 14rem), 39rem);
+        }
+
+        &--narrow {
+            min-height: initial;
         }
     }
 }
